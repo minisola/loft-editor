@@ -1,0 +1,12 @@
+logs/
+npm-debug.log
+node_modules/
+package-lock.json
+.idea/
+run/
+.DS_Store
+*.sw*
+*.un~
+typings/
+.nyc_output/
+dist
