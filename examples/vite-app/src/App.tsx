@@ -29,20 +29,18 @@ function App() {
         <Outline data={content} />
         <Button
           onClick={() => {
-            const json = editorRef.current?.$editor.getJSON();
-            console.log(json);
+            const json = editorRef.current!.getJSON();
+            console.log(".json: ", json);
           }}
         >
           获得JSON
         </Button>
         <Button
           onClick={() => {
-            console.log("editorRef.current: ", editorRef.current);
-            // const md = editorRef.current?.getMarkdown();
-            // console.log("md: ", md);
+            console.log(".md: ", editorRef.current?.getMarkdown());
           }}
         >
-          获得MD
+          获得markdown
         </Button>
         <Button onClick={() => {}}>只读</Button>
       </div>

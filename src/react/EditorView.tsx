@@ -14,21 +14,20 @@ export function EditorView(
   } & HTMLAttributes<HTMLDivElement>
 ) {
   const { loftEditor, ...rest } = props;
-  const { $editor, pluginViews } = loftEditor;
+  const { $editor, showToolbar, pluginViews } = loftEditor;
   const rootElRef = React.useRef<HTMLDivElement | null>(null);
 
   return (
     <LocaleProvider locale={loftEditor.locale}>
-      <ConfigProvider
-      // theme={{
-      //   algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
-      // }}
-      >
+      <ConfigProvider>
         <StyleProvider hashPriority="high">
           <RootElContext.Provider value={rootElRef}>
             <div className="loft-editor-view" ref={rootElRef}>
-              <Toolbar editor={$editor} />
+              {/* toolbar */}
+              {showToolbar ? <Toolbar editor={$editor} /> : null}
+              {/* tiptap editorContent */}
               <EditorContent editor={$editor} {...rest}></EditorContent>
+              {/* plugin views */}
               {pluginViews.map((Component, index) => {
                 return <Component editor={$editor} key={index}></Component>;
               })}

@@ -3,6 +3,7 @@ import { Content, Editor as TiptapEditor } from "@tiptap/core";
 import { SlashMenuPlugin } from "../plugin-slash-menu";
 import { EditorView } from "@tiptap/pm/view";
 import { defaultTiptapExtensions } from "../tiptap";
+import { serialize } from "../plugin-markdown";
 import {
   LocaleStore,
   UploadImageHandler,
@@ -37,6 +38,7 @@ export type LoftEditorOptions = {
   /** 额外的扩展 */
   extensions?: EditorOptions["extensions"];
   locale?: Locale;
+  showToolbar?: boolean;
 };
 
 export class LoftEditor {
@@ -50,6 +52,7 @@ export class LoftEditor {
   public ready = false;
   /** 国际化 */
   public locale?: Locale;
+  public showToolbar?: boolean;
 
   constructor(readonly options: Partial<LoftEditorOptions> = {}) {
     const newOptions = {
@@ -78,10 +81,16 @@ export class LoftEditor {
       extensions: [...defaultExtensions, ...(options.extensions || [])],
     };
 
+    // toolbar
+    this.showToolbar = newOptions.showToolbar === false ? false : true;
+
     this.$editor = new TiptapEditor(tiptapOptions) as TiptapReactEditor;
 
     //local set
-    this.locale = options.locale || localeValues;
+    this.locale = {
+      ...localeValues,
+      ...options.locale,
+    };
     LocaleStore.set(this.$editor, this.locale);
 
     // handler set
@@ -98,6 +107,13 @@ export class LoftEditor {
 
   public isFocused() {
     return this.$editor.view.hasFocus();
+  }
+
+  public getJSON() {
+    return this.$editor.getJSON();
+  }
+  public getMarkdown() {
+    return serialize(this.$editor?.getHTML() || "");
   }
 
   public focus() {
