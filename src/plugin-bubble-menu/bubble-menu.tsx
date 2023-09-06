@@ -26,6 +26,9 @@ export function EditorBubbleMenu(props: EditorBubbleMenuProps) {
   const bubbleMenuProps: EditorBubbleMenuProps = {
     ...props,
     shouldShow: ({ editor }) => {
+      if (!editor.isEditable) {
+        return false;
+      }
       // 图片、代码无需弹出
       if (editor.isActive("image") || editor.isActive("codeBlock")) {
         return false;

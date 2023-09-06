@@ -10,8 +10,8 @@ import {
   onUploadImageType,
 } from "../cacheStore";
 import { EditorBubbleMenu } from "../plugin-bubble-menu";
-import { Locale } from "../react/locale/context";
-import localeValues from "../react/locale/default";
+import { Locale } from "../view/locale/context";
+import localeValues from "../view/locale/default";
 
 // 初始化slash插件
 const slashExtension = SlashMenuPlugin();
@@ -39,6 +39,7 @@ export type LoftEditorOptions = {
   extensions?: EditorOptions["extensions"];
   locale?: Locale;
   showToolbar?: boolean;
+  readonly?: boolean;
 };
 
 export class LoftEditor {
@@ -53,6 +54,7 @@ export class LoftEditor {
   /** 国际化 */
   public locale?: Locale;
   public showToolbar?: boolean;
+  public readonly?: boolean;
 
   constructor(readonly options: Partial<LoftEditorOptions> = {}) {
     const newOptions = {

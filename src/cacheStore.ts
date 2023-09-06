@@ -1,6 +1,6 @@
 import { Editor } from "@tiptap/core";
-import { Locale, LocaleKeyType } from "./react/locale/context";
-import { LocaleValuesType } from "./react/locale/lang/zh_CN";
+import { Locale, LocaleKeyType } from "./view/locale/context";
+import { LocaleValuesType } from "./view/locale/lang/zh_CN";
 
 export type onUploadImageType = (
   file: File,

@@ -1,7 +1,7 @@
 import "../../../dist/style.css";
 import { useEffect, useRef } from "react";
 import { Button } from "antd";
-import { EditorRender, LoftEditor, onUploadImageType } from "../../../dist";
+import { EditorRender, LoftEditor, onUploadImageType } from "../../../dist/esm";
 import Outline from "../../../src/Outline";
 import { uploadImg } from "./utils/uploadImg";
 

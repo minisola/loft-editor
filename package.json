@@ -1,21 +1,20 @@
 {
   "name": "loft-editor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "loft-editor is a WYSIWYG editor driven by tiptap & react & antd",
   "license": "MIT",
   "author": "sc-frontend group",
   "scripts": {
     "dev": "run-p dev:ts dev:css dev:sample",
-    "dev:ts": "tsc -w",
+    "dev:ts": "father dev -w",
     "dev:css": "tailwindcss -i ./style/index.css -o ./dist/style.css -w",
     "dev:sample": "cd examples/vite-app && pnpm run dev",
-    "build": "tsc && pnpm run build:css",
+    "build": "father build && pnpm run build:css",
     "build:css": "tailwindcss -i ./style/index.css -o ./dist/style.css",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
-  "type": "module",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "files": [
     "dist/"
   ],
@@ -64,15 +63,12 @@
     "@tiptap/starter-kit": "^2.0.3",
     "@tiptap/suggestion": "^2.0.3",
     "@yaskevich/extension-marker": "^1.0.2",
-    "antd": "^5.8.4",
     "classnames": "^2.3.2",
     "eventsource-parser": "^1.0.0",
     "highlight.js": "^11.8.0",
     "lowlight": "^2.9.0",
     "lucide-react": "^0.264.0",
     "p-limit": "^4.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "rehype-highlight": "^6.0.0",
     "rehype-parse": "^8.0.4",
     "rehype-preset-minify": "^6.0.0",
@@ -98,6 +94,7 @@
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "father": "^4.3.1",
     "npm-run-all": "^4.1.5",
     "postcss": "8.4.24",
     "postcss-import": "^15.1.0",
@@ -105,6 +102,14 @@
     "tailwindcss": "3.3.3",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
-    "vite-plugin-dts": "^3.2.0"
+    "vite-plugin-dts": "^3.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "antd": "^5.8.4"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "antd": "^5.8.4"
   }
 }
