@@ -4,5 +4,7 @@ export * from "./Editor/useLoftEditor";
 export * from "./cacheStore";
 export * from "./modifier";
 
+export * from "./view/OutlineView";
+
 export * from "./plugin-bubble-menu";
 export * from "./plugin-slash-menu";

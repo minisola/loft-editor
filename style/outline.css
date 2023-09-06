@@ -1,0 +1,16 @@
+.outline-text {
+  display: block;
+  cursor: pointer;
+}
+.loft-editor-outline {
+  width: 20%;
+}
+.outline-text-level-2 {
+  padding-left: 1rem;
+}
+.outline-text-level-3 {
+  padding-left: 2rem;
+}
+.outline-text-active {
+  color: cadetblue;
+}

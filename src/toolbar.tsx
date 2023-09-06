@@ -10,7 +10,6 @@ export function Toolbar(props: ToolbarProps) {
   const { token } = theme.useToken();
 
   return (
-    <div className="loft-editor-toolbar">
       <div
         style={{
           display: "flex",
@@ -27,6 +26,5 @@ export function Toolbar(props: ToolbarProps) {
           </div>
         </div>
       </div>
-    </div>
   );
 }

@@ -2,8 +2,8 @@ import "../../../dist/style.css";
 import { useEffect, useRef } from "react";
 import { Button } from "antd";
 import { EditorRender, LoftEditor, onUploadImageType } from "../../../dist/esm";
-import Outline from "../../../src/Outline";
 import { uploadImg } from "./utils/uploadImg";
+import "./index.css";
 
 function App() {
   const content = JSON.parse(import.meta.env.VITE_CONTENT_STRING);
@@ -26,7 +26,6 @@ function App() {
   return (
     <div style={{ padding: 25 }}>
       <div>
-        <Outline data={content} />
         <Button
           onClick={() => {
             const json = editorRef.current!.getJSON();
@@ -42,9 +41,14 @@ function App() {
         >
           获得markdown
         </Button>
-        <Button onClick={() => {}}>只读</Button>
+        <Button
+          onClick={() => {
+            editorRef.current?.setEditable(false);
+          }}
+        >
+          只读
+        </Button>
       </div>
-
       <div id="content">
         <EditorRender
           content={content!}
@@ -52,6 +56,9 @@ function App() {
             editorRef.current = editor;
           }}
           onUploadImage={onUploadImage}
+          onUpdate={(editor) => {
+            console.log(editor);
+          }}
         ></EditorRender>
       </div>
     </div>

@@ -39,7 +39,6 @@ export type LoftEditorOptions = {
   extensions?: EditorOptions["extensions"];
   locale?: Locale;
   showToolbar?: boolean;
-  readonly?: boolean;
 };
 
 export class LoftEditor {
@@ -54,7 +53,6 @@ export class LoftEditor {
   /** 国际化 */
   public locale?: Locale;
   public showToolbar?: boolean;
-  public readonly?: boolean;
 
   constructor(readonly options: Partial<LoftEditorOptions> = {}) {
     const newOptions = {
@@ -117,6 +115,9 @@ export class LoftEditor {
   public getMarkdown() {
     return serialize(this.$editor?.getHTML() || "");
   }
+  public getHTML() {
+    return this.$editor?.getHTML();
+  }
 
   public focus() {
     this.$editor.view.focus();
@@ -133,7 +134,7 @@ export class LoftEditor {
     return this.$editor.isEditable;
   }
 
-  public set isEditable(editable: boolean) {
+  public setEditable(editable: boolean) {
     this.$editor.setEditable(editable);
   }
 }

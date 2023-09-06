@@ -7,6 +7,7 @@ import React from "react";
 import { LoftEditor } from "../Editor/LoftEditor";
 import { Toolbar } from "../toolbar";
 import LocaleProvider from "./locale/provider";
+import { Outline } from "./OutlineView";
 
 export function EditorView(
   props: {
@@ -24,13 +25,20 @@ export function EditorView(
           <RootElContext.Provider value={rootElRef}>
             <div className="loft-editor-view" ref={rootElRef}>
               {/* toolbar */}
-              {showToolbar ? <Toolbar editor={$editor} /> : null}
-              {/* tiptap editorContent */}
-              <EditorContent editor={$editor} {...rest}></EditorContent>
-              {/* plugin views */}
-              {pluginViews.map((Component, index) => {
-                return <Component editor={$editor} key={index}></Component>;
-              })}
+              <div className="loft-editor-content">
+                <div className="loft-editor-toolbar">
+                  {showToolbar ? <Toolbar editor={$editor} /> : null}
+                </div>
+                {/* tiptap editorContent */}
+                <EditorContent editor={$editor} {...rest}></EditorContent>
+                {/* plugin views */}
+                {pluginViews.map((Component, index) => {
+                  return <Component editor={$editor} key={index}></Component>;
+                })}
+              </div>
+              <div className="loft-editor-outline">
+                <Outline editor={loftEditor} />
+              </div>
             </div>
           </RootElContext.Provider>
         </StyleProvider>
