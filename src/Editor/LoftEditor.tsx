@@ -1,15 +1,15 @@
 import { EditorOptions, Editor as TiptapReactEditor } from "@tiptap/react";
 import { Content, Editor as TiptapEditor } from "@tiptap/core";
-import { SlashMenuPlugin } from "../plugin-slash-menu";
+import { SlashMenuPlugin } from "../extensions/slash-menu";
 import { EditorView } from "@tiptap/pm/view";
 import { defaultTiptapExtensions } from "../tiptap";
-import { serialize } from "../plugin-markdown";
+import { serialize } from "../extensions/markdown";
 import {
   LocaleStore,
   UploadImageHandler,
   onUploadImageType,
 } from "../cacheStore";
-import { EditorBubbleMenu } from "../plugin-bubble-menu";
+import { EditorBubbleMenu } from "../extensions/bubble-menu";
 import { Locale } from "../view/locale/context";
 import localeValues from "../view/locale/default";
 
@@ -39,6 +39,7 @@ export type LoftEditorOptions = {
   extensions?: EditorOptions["extensions"];
   locale?: Locale;
   showToolbar?: boolean;
+  showOutline?: boolean;
 };
 
 export class LoftEditor {
@@ -53,6 +54,7 @@ export class LoftEditor {
   /** 国际化 */
   public locale?: Locale;
   public showToolbar?: boolean;
+  public showOutline?: boolean;
 
   constructor(readonly options: Partial<LoftEditorOptions> = {}) {
     const newOptions = {
@@ -83,6 +85,8 @@ export class LoftEditor {
 
     // toolbar
     this.showToolbar = newOptions.showToolbar === false ? false : true;
+    // outline
+    this.showOutline = newOptions.showOutline === false ? false : true;
 
     this.$editor = new TiptapEditor(tiptapOptions) as TiptapReactEditor;
 

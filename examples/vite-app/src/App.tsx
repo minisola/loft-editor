@@ -59,6 +59,8 @@ function App() {
           onUpdate={(editor) => {
             console.log(editor);
           }}
+          showToolbar={false}
+          showOutline={false}
         ></EditorRender>
       </div>
     </div>

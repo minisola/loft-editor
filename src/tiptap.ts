@@ -1,52 +1,54 @@
-import TiptapImage from '@tiptap/extension-image';
-import TiptapTaskItem from '@tiptap/extension-task-item';
-import TiptapTaskList from '@tiptap/extension-task-list';
-import Link from '@tiptap/extension-link';
-import Highlight from '@tiptap/extension-highlight';
-import Typography from '@tiptap/extension-typography';
-import Table from '@tiptap/extension-table';
-import TableCell from '@tiptap/extension-table-cell';
-import TableHeader from '@tiptap/extension-table-header';
-import TableRow from '@tiptap/extension-table-row';
-import Placeholder from '@tiptap/extension-placeholder';
+import TiptapImage from "@tiptap/extension-image";
+import TiptapTaskItem from "@tiptap/extension-task-item";
+import TiptapTaskList from "@tiptap/extension-task-list";
+import Link from "@tiptap/extension-link";
+import Highlight from "@tiptap/extension-highlight";
+import Typography from "@tiptap/extension-typography";
+import Table from "@tiptap/extension-table";
+import TableCell from "@tiptap/extension-table-cell";
+import TableHeader from "@tiptap/extension-table-header";
+import TableRow from "@tiptap/extension-table-row";
+import Placeholder from "@tiptap/extension-placeholder";
 
-import { Blockquote } from '@tiptap/extension-blockquote';
-import { Bold } from '@tiptap/extension-bold';
-import { BulletList } from '@tiptap/extension-bullet-list';
-import { Code } from '@tiptap/extension-code';
-import { Document } from '@tiptap/extension-document';
-import { Dropcursor } from '@tiptap/extension-dropcursor';
-import { Gapcursor } from '@tiptap/extension-gapcursor';
-import { HardBreak } from '@tiptap/extension-hard-break';
-import { Heading } from '@tiptap/extension-heading';
-import { History } from '@tiptap/extension-history';
-import { HorizontalRule } from '@tiptap/extension-horizontal-rule';
-import { Italic } from '@tiptap/extension-italic';
-import { ListItem } from '@tiptap/extension-list-item';
-import { OrderedList } from '@tiptap/extension-ordered-list';
-import { Paragraph } from '@tiptap/extension-paragraph';
-import { Strike } from '@tiptap/extension-strike';
-import { Text } from '@tiptap/extension-text';
-import { Color } from '@tiptap/extension-color';
-import TextStyle from '@tiptap/extension-text-style'
-import Marker from "@yaskevich/extension-marker"
+import { Blockquote } from "@tiptap/extension-blockquote";
+import { Bold } from "@tiptap/extension-bold";
+import { BulletList } from "@tiptap/extension-bullet-list";
+import { Code } from "@tiptap/extension-code";
+import { Document } from "@tiptap/extension-document";
+import { Dropcursor } from "@tiptap/extension-dropcursor";
+import { Gapcursor } from "@tiptap/extension-gapcursor";
+import { HardBreak } from "@tiptap/extension-hard-break";
+import { Heading } from "@tiptap/extension-heading";
+import { History } from "@tiptap/extension-history";
+import { HorizontalRule } from "@tiptap/extension-horizontal-rule";
+import { Italic } from "@tiptap/extension-italic";
+import { ListItem } from "@tiptap/extension-list-item";
+import { OrderedList } from "@tiptap/extension-ordered-list";
+import { Paragraph } from "@tiptap/extension-paragraph";
+import { Strike } from "@tiptap/extension-strike";
+import { Text } from "@tiptap/extension-text";
+import { Color } from "@tiptap/extension-color";
+import TextStyle from "@tiptap/extension-text-style";
+import Marker from "@yaskevich/extension-marker";
 
-import { FenseExtension } from './plugin-fense';
-import { MarkdownExtension } from './plugin-markdown';
+import { FenseExtension } from "./extensions/fense";
+import { MarkdownExtension } from "./extensions/markdown";
+import { LocaleValuesType } from "./view/locale/lang/zh_CN";
+import { LocaleStore } from "./cacheStore";
 
 const TaskList = TiptapTaskList.extend({
   parseHTML() {
     return [
       {
         tag: `ul[data-type="${this.name}"]`,
-        priority: 51
+        priority: 51,
       },
       {
-        tag: 'ul.contains-task-list',
-        priority: 51
-      }
+        tag: "ul.contains-task-list",
+        priority: 51,
+      },
     ];
-  }
+  },
 });
 
 const TaskItem = TiptapTaskItem.extend({
@@ -54,12 +56,14 @@ const TaskItem = TiptapTaskItem.extend({
     return {
       checked: {
         default: false,
-        parseHTML: element =>
-          element.querySelector('input[type="checkbox"]')?.hasAttribute('checked'),
-        renderHTML: attributes => ({
-          'data-checked': attributes.checked
-        })
-      }
+        parseHTML: (element) =>
+          element
+            .querySelector('input[type="checkbox"]')
+            ?.hasAttribute("checked"),
+        renderHTML: (attributes) => ({
+          "data-checked": attributes.checked,
+        }),
+      },
     };
   },
 
@@ -67,23 +71,23 @@ const TaskItem = TiptapTaskItem.extend({
     return [
       {
         tag: `li[data-type="${this.name}"]`,
-        priority: 51
+        priority: 51,
       },
       {
         tag: `li.task-list-item`,
-        priority: 51
-      }
+        priority: 51,
+      },
     ];
-  }
+  },
 });
 
 const Image = TiptapImage.configure({
-  allowBase64: true
+  allowBase64: true,
 });
 
 Color.configure({
-  types: ['textStyle'],
-})
+  types: ["textStyle"],
+});
 
 export const defaultTiptapExtensions = [
   MarkdownExtension,
@@ -91,23 +95,28 @@ export const defaultTiptapExtensions = [
   Typography,
   TaskList.configure({
     HTMLAttributes: {
-      class: 'not-prose contains-task-list'
-    }
+      class: "not-prose contains-task-list",
+    },
   }),
   TaskItem.configure({
     HTMLAttributes: {
-      class: 'task-list-item'
+      class: "task-list-item",
     },
-    nested: true
+    nested: true,
   }),
   Placeholder.configure({
-    placeholder: ({ node }) => {
-      if (node.type.name === 'heading') {
-        return `Heading ${node.attrs.level}`;
+    placeholder: ({ node, editor }) => {
+      const locale = LocaleStore.get(
+        editor,
+        "placeholder"
+      ) as LocaleValuesType["placeholder"];
+
+      if (node.type.name === "heading") {
+        return `${locale.heading.title} ${node.attrs.level}`;
       }
-      return "Press '/' for commands";
+      return locale.quickMenu.title;
     },
-    includeChildren: true
+    includeChildren: true,
   }),
   Image,
   Link,
@@ -137,5 +146,5 @@ export const defaultTiptapExtensions = [
 
   TextStyle,
   Color,
-  Marker
+  Marker,
 ];

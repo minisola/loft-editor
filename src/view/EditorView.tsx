@@ -15,7 +15,7 @@ export function EditorView(
   } & HTMLAttributes<HTMLDivElement>
 ) {
   const { loftEditor, ...rest } = props;
-  const { $editor, showToolbar, pluginViews } = loftEditor;
+  const { $editor, showToolbar, showOutline, pluginViews } = loftEditor;
   const rootElRef = React.useRef<HTMLDivElement | null>(null);
 
   return (
@@ -36,9 +36,11 @@ export function EditorView(
                   return <Component editor={$editor} key={index}></Component>;
                 })}
               </div>
-              <div className="loft-editor-outline">
-                <Outline editor={loftEditor} />
-              </div>
+              {showOutline ? (
+                <div className="loft-editor-outline">
+                  <Outline editor={loftEditor} />
+                </div>
+              ) : null}
             </div>
           </RootElContext.Provider>
         </StyleProvider>

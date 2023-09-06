@@ -1,6 +1,6 @@
 import { Editor } from "@tiptap/core";
 import { theme } from "antd";
-import { InlineTools } from "./plugin-bubble-menu";
+import { InlineTools } from "./extensions/bubble-menu";
 
 export type ToolbarProps = React.PropsWithChildren<{
   editor: Editor;

@@ -20,10 +20,10 @@ import {
   ImageIcon,
   TableIcon,
 } from "lucide-react";
-import { LocaleStore, UploadImageHandler } from "../cacheStore";
-import { EditorModifier } from "../modifier";
+import { LocaleStore, UploadImageHandler } from "../../cacheStore";
+import { EditorModifier } from "../../modifier";
 import { SuggestionOptions } from "@tiptap/suggestion";
-import { LocaleValuesType } from "../view/locale/lang/zh_CN";
+import { LocaleValuesType } from "../../view/locale/lang/zh_CN";
 
 interface CommandProps {
   editor: Editor;

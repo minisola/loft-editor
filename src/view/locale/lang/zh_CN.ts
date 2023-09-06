@@ -1,9 +1,7 @@
+import { Placeholder } from '@tiptap/extension-placeholder';
 const localeValues = {
   locale: "zh-cn",
-  global: {
-    placeholder: "请选择",
-    loading: "加载中...",
-  },
+  global: {},
   slashSuggestion: {
     text: {
       title: "文本",
@@ -56,6 +54,19 @@ const localeValues = {
     deleteCol: {
       title: "删除列",
     },
+  },
+  link: {
+    insert: {
+      title: "插入链接",
+    },
+  },
+  placeholder: {
+    heading: {
+      title: "标题",
+    },
+    quickMenu:{
+      title:"输入\"/\" 打开快捷命令"
+    }
   },
 } as const;
 

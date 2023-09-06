@@ -5,7 +5,7 @@ import Suggestion, {
   SuggestionProps,
 } from "@tiptap/suggestion";
 import { Extension } from "@tiptap/react";
-import { useRootElRef } from "../context";
+import { useRootElRef } from "../../context";
 import { getSuggestionItems } from "./suggestions";
 
 interface SuggestionPropsItem {

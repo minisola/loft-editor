@@ -6,5 +6,5 @@ export * from "./modifier";
 
 export * from "./view/OutlineView";
 
-export * from "./plugin-bubble-menu";
-export * from "./plugin-slash-menu";
+export * from "./extensions/bubble-menu";
+export * from "./extensions/slash-menu";

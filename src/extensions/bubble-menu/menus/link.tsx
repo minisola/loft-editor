@@ -2,8 +2,14 @@ import { Link1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { Input, InputRef } from "antd";
 import { useRef } from "react";
 import { IBubbleCompsProps } from "../types";
+import { LocaleStore } from "../../../cacheStore";
+import { LocaleValuesType } from "../../../view/locale/lang/zh_CN";
 
 export const linkComps: IBubbleCompsProps = (props, setOpen) => {
+  const locale = LocaleStore.get(
+    props.editor,
+    "link"
+  ) as LocaleValuesType["link"];
   const linkInputRef = useRef<InputRef>(null);
   const link = {
     name: "link",
@@ -26,7 +32,7 @@ export const linkComps: IBubbleCompsProps = (props, setOpen) => {
         ref={linkInputRef}
         defaultValue={props.editor.getAttributes("link").href || ""}
         onClick={() => linkInputRef.current?.focus()}
-        placeholder="Insert Link"
+        placeholder={locale.insert.title}
         onPressEnter={(e) => {
           if (e.currentTarget.value.trim()) {
             const url = e.currentTarget.value;
