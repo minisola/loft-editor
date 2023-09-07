@@ -1,0 +1,76 @@
+.loft-img {
+  display: flex;
+}
+.loft-img__align-left {
+  justify-content: flex-start;
+}
+.loft-img__align-center {
+  justify-content: center;
+}
+.loft-img__align-right {
+  justify-content: flex-end;
+}
+.loft-img__view {
+  position: relative;
+  border: 1px solid transparent;
+}
+.loft-img__view:hover {
+  border-color: blue;
+}
+.loft-img__view img {
+  position: relative;
+  display: block;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto !important;
+}
+.loft-img__view-hover:hover .loft-img__view-resize-btn {
+  visibility: visible;
+}
+.loft-img__view-resize {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.loft-img__view-resize-btn {
+  visibility: hidden;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.loft-img__view-resize-btn:after {
+  content: '';
+  display: block;
+  height: 8px;
+  width: 8px;
+  border: 1px solid blue;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.loft-img__view-resize-btn-top-left {
+  top: -9px;
+  left: -9px;
+  cursor: nwse-resize;
+}
+.loft-img__view-resize-btn-top-right {
+  top: -9px;
+  right: -9px;
+  cursor: nesw-resize;
+}
+.loft-img__view-resize-btn-bottom-left {
+  bottom: -9px;
+  left: -9px;
+  cursor: nesw-resize;
+}
+.loft-img__view-resize-btn-bottom-right {
+  bottom: -9px;
+  right: -9px;
+  cursor: nwse-resize;
+}

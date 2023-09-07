@@ -2,7 +2,7 @@ import { EditorOptions, Editor as TiptapReactEditor } from "@tiptap/react";
 import { Content, Editor as TiptapEditor } from "@tiptap/core";
 import { SlashMenuPlugin } from "../extensions/slash-menu";
 import { EditorView } from "@tiptap/pm/view";
-import { defaultTiptapExtensions } from "../tiptap";
+import { defaultTiptapExtensions } from "../extensions";
 import { serialize } from "../extensions/markdown";
 import {
   LocaleStore,
@@ -12,6 +12,7 @@ import {
 import { EditorBubbleMenu } from "../extensions/bubble-menu";
 import { Locale } from "../view/locale/context";
 import localeValues from "../view/locale/default";
+import { ImageBubbleMenu } from "../extensions/image";
 
 // 初始化slash插件
 const slashExtension = SlashMenuPlugin();
@@ -49,6 +50,7 @@ export class LoftEditor {
   public readonly pluginViews: React.FC<ExtensionDefaultProps>[] = [
     slashExtension.view,
     EditorBubbleMenu,
+    ImageBubbleMenu
   ];
   public ready = false;
   /** 国际化 */

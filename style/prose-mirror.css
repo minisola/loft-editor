@@ -374,8 +374,8 @@
 }
 
 .loft-editor-view .ProseMirror :where(img):not(:where([class~='not-prose'] *)) {
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .loft-editor-view .ProseMirror :where(figure > *):not(:where([class~='not-prose'] *)) {

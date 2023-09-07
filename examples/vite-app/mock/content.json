@@ -239,7 +239,10 @@
             "attrs": {
                 "src": "https://dev-fe-pkg.oss-cn-hangzhou.aliyuncs.com/sl/wallpaper/1693290433756ECvA2Q1c.jpg",
                 "alt": "20230817144208.jpg",
-                "title": "20230817144208.jpg"
+                "title": "20230817144208.jpg",
+                "width": "100%",
+                "height": "auto",
+                "align": "center"
             }
         },
         {

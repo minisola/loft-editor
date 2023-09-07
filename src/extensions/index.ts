@@ -31,10 +31,11 @@ import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import Marker from "@yaskevich/extension-marker";
 
-import { FenseExtension } from "./extensions/fense";
-import { MarkdownExtension } from "./extensions/markdown";
-import { LocaleValuesType } from "./view/locale/lang/zh_CN";
-import { LocaleStore } from "./cacheStore";
+import { FenseExtension } from "./fense";
+import { MarkdownExtension } from "./markdown";
+import { LocaleValuesType } from "../view/locale/lang/zh_CN";
+import { LocaleStore } from "../cacheStore";
+import { Image } from "./image";
 
 const TaskList = TiptapTaskList.extend({
   parseHTML() {
@@ -81,9 +82,9 @@ const TaskItem = TiptapTaskItem.extend({
   },
 });
 
-const Image = TiptapImage.configure({
-  allowBase64: true,
-});
+// const Image = TiptapImage.configure({
+//   allowBase64: true,
+// });
 
 Color.configure({
   types: ["textStyle"],
