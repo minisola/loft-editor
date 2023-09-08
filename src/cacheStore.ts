@@ -1,6 +1,6 @@
 import { Editor } from "@tiptap/core";
 import { Locale, LocaleKeyType } from "./view/locale/context";
-import { LocaleValuesType } from "./view/locale/lang/zh_CN";
+import localeValues, { LocaleValuesType } from "./view/locale/lang/zh_CN";
 
 export type onUploadImageType = (
   file: File,
@@ -35,7 +35,10 @@ export class LocaleStore {
 
   static get(editor: Editor, moduleName?: LocaleKeyType) {
     const module = moduleName || "global";
-    const locale = LocaleStore.LOCALE.get(editor) as LocaleValuesType;
+    let locale = LocaleStore.LOCALE.get(editor) as LocaleValuesType;
+    if (locale) {
+      locale = localeValues;
+    }
     if (moduleName) {
       const moduleJson = locale?.[module];
       return moduleJson;

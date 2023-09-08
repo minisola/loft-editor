@@ -1,4 +1,3 @@
-import { Placeholder } from '@tiptap/extension-placeholder';
 const localeValues = {
   locale: "zh-cn",
   global: {},
