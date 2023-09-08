@@ -3,7 +3,7 @@ import { create } from "./oss";
 const getUploadCredential = async ({ filename }: { filename: string }) => {
   return new Promise((resolve) => {
     fetch(
-      `${import.meta.env.VITE_API_IMG_UPLOADER_STS}type=3&filename=${filename}`,
+      `${import.meta.env.VITE_API_IMG_UPLOADER_STS}?type=3&filename=${filename}`,
       {
         mode: "cors",
         method: "GET",
