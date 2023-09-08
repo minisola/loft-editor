@@ -36,7 +36,7 @@ export class LocaleStore {
   static get(editor: Editor, moduleName?: LocaleKeyType) {
     const module = moduleName || "global";
     let locale = LocaleStore.LOCALE.get(editor) as LocaleValuesType;
-    if (locale) {
+    if (!locale) {
       locale = localeValues;
     }
     if (moduleName) {
