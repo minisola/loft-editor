@@ -42,10 +42,10 @@ const localeValues = {
       title: "在上方插入行",
     },
     addColBefore: {
-      title: "在上方插入列",
+      title: "在右侧插入列",
     },
     addColAfter: {
-      title: "在下方插入列",
+      title: "在左侧插入列",
     },
     deleteRow: {
       title: "删除行",

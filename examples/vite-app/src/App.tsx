@@ -58,7 +58,7 @@ function App() {
           }}
           onUploadImage={onUploadImage}
           onUpdate={(editor) => {
-            console.log(editor);
+            // console.log(editor);
           }}
           // locale={enUS}
           showToolbar={false}
