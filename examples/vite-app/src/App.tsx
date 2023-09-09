@@ -4,6 +4,7 @@ import { Button } from "antd";
 import { EditorRender, LoftEditor, onUploadImageType } from "../../../dist/esm";
 import { uploadImg } from "./utils/uploadImg";
 import "./index.css";
+// import { enUS } from "../../../dist/esm/view/locale/lang";
 
 function App() {
   const content = JSON.parse(import.meta.env.VITE_CONTENT_STRING);
@@ -59,6 +60,7 @@ function App() {
           onUpdate={(editor) => {
             console.log(editor);
           }}
+          // locale={enUS}
           showToolbar={false}
           showOutline={false}
         ></EditorRender>

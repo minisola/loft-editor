@@ -50,13 +50,14 @@ export class LoftEditor {
   public readonly pluginViews: React.FC<ExtensionDefaultProps>[] = [
     slashExtension.view,
     EditorBubbleMenu,
-    ImageBubbleMenu
+    ImageBubbleMenu,
   ];
   public ready = false;
   /** 国际化 */
   public locale?: Locale;
   public showToolbar?: boolean;
-  public showOutline?: boolean;
+  // 默认隐藏大纲
+  public showOutline?: boolean = false;
 
   constructor(readonly options: Partial<LoftEditorOptions> = {}) {
     const newOptions = {
@@ -87,8 +88,6 @@ export class LoftEditor {
 
     // toolbar
     this.showToolbar = newOptions.showToolbar === false ? false : true;
-    // outline
-    this.showOutline = newOptions.showOutline === false ? false : true;
 
     this.$editor = new TiptapEditor(tiptapOptions) as TiptapReactEditor;
 

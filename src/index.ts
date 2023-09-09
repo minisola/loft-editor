@@ -6,5 +6,7 @@ export * from "./modifier";
 
 export * from "./view/OutlineView";
 
+export * from "./view/locale"
+
 export * from "./extensions/bubble-menu";
 export * from "./extensions/slash-menu";
