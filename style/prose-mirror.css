@@ -94,13 +94,13 @@
   margin-top: 0;
 }
 
-.ProseMirror ul.contains-task-list {
+/* .ProseMirror ul.contains-task-list {
   @apply pl-0;
 }
 
 .ProseMirror .task-list-item {
   @apply flex items-start my-4 pl-0;
-}
+} */
 
 .ProseMirror ul.contains-task-list .task-list-item > label {
   margin-right: 0.2rem;

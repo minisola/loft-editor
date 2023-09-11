@@ -114,8 +114,8 @@ export function InlineTools(props: { editor: Editor }) {
             key={item.name}
             type={item.isActive() ? "primary" : "text"}
             onClick={item.command}
+            icon={item.icon}
           >
-            {item.icon}
           </Button>
         );
       })}

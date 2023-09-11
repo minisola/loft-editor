@@ -1,16 +1,15 @@
 {
   "name": "loft-editor",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "loft-editor is a WYSIWYG editor driven by tiptap & react & antd",
   "license": "MIT",
   "author": "sc-frontend group",
   "scripts": {
-    "dev": "run-p dev:ts dev:css dev:sample",
+    "dev": "run-p dev:ts dev:sample",
     "dev:ts": "father dev -w",
     "dev:css": "tailwindcss -i ./style/index.css -o ./dist/style.css -w",
     "dev:sample": "cd examples/vite-app && pnpm run dev",
-    "build": "father build && pnpm run build:css",
-    "build:css": "tailwindcss -i ./style/index.css -o ./dist/style.css",
+    "build": "father build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "module": "./dist/esm/index.js",

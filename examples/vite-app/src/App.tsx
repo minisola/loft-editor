@@ -1,4 +1,4 @@
-import "../../../dist/style.css";
+import "../../../dist/css/style.css";
 import { useEffect, useRef } from "react";
 import { Button } from "antd";
 import { EditorRender, LoftEditor, onUploadImageType } from "../../../dist/esm";
@@ -61,8 +61,7 @@ function App() {
             // console.log(editor);
           }}
           // locale={enUS}
-          showToolbar={false}
-          showOutline={false}
+          // showToolbar={false}
         ></EditorRender>
       </div>
     </div>
