@@ -56,6 +56,17 @@ const localeValues: Locale = {
       title: "删除列",
     },
   },
+  fontColor: {
+    color: {
+      title: "Font Color",
+    },
+    background: {
+      title: "Background Color",
+    },
+    reset: {
+      title: "Reset",
+    },
+  },
   link: {
     insert: {
       title: "Inset Link",

@@ -1,5 +1,5 @@
 import "../../../dist/css/style.css";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Button } from "antd";
 import { EditorRender, LoftEditor, onUploadImageType } from "../../../dist/esm";
 import { uploadImg } from "./utils/uploadImg";
@@ -9,12 +9,6 @@ import "./index.css";
 function App() {
   const content = JSON.parse(import.meta.env.VITE_CONTENT_STRING);
   const editorRef = useRef<LoftEditor>();
-
-  useEffect(() => {
-    // 禁止拼写检查
-    const contentDOM = document.getElementById("content");
-    contentDOM!.spellcheck = false;
-  }, []);
 
   // 上传图片并返回url
   const onUploadImage: onUploadImageType = async (file: File) => {
@@ -50,16 +44,16 @@ function App() {
           只读
         </Button>
       </div>
-      <div id="content">
+      <div id="content" spellCheck={false}>
         <EditorRender
           content={content!}
           onReady={(editor) => {
             editorRef.current = editor;
           }}
           onUploadImage={onUploadImage}
-          onUpdate={(editor) => {
-            // console.log(editor);
-          }}
+          // onUpdate={(editor) => {
+          // console.log(editor);
+          // }}
           // locale={enUS}
           // showToolbar={false}
         ></EditorRender>

@@ -15,7 +15,7 @@ const BubbleItem: React.FC<IBubbleItemProps> = ({ comps, props }) => {
   return (
     <div
       ref={containerRef}
-      style={{ display: "inline-block" }}
+      style={{ display: "inline-flex" }}
       onMouseDown={(e) => {
         e.stopPropagation();
         e.preventDefault();
@@ -31,9 +31,11 @@ const BubbleItem: React.FC<IBubbleItemProps> = ({ comps, props }) => {
         getPopupContainer={() => containerRef.current || document.body}
         align={{ offset: [8, 10] }}
       >
-        <Button key={obj.name} type={obj.isActive() ? "primary" : "text"}>
-          {obj.icon}
-        </Button>
+        <Button
+          className="loft-editor-icon-adapt"
+          type={obj.isActive() ? "primary" : "text"}
+          icon={obj.icon}
+        ></Button>
       </Popover>
     </div>
   );

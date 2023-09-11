@@ -1,6 +1,9 @@
 import { FontStyleIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { IBubbleCompsProps } from "../types";
+import { LocaleStore } from "../../../cacheStore";
+import { LocaleValuesType } from "../../../view/locale/lang/zh_CN";
+import { Button } from "antd";
 
 const NULL_SYMBOL = "/";
 const colors = {
@@ -39,6 +42,12 @@ const colors = {
 export const colorComps: IBubbleCompsProps = (props) => {
   const [textColorKey, setTextColorKey] = useState<string>(NULL_SYMBOL);
   const [bgColorKey, setBgColorKey] = useState<string>(NULL_SYMBOL);
+
+  const locale = LocaleStore.get(
+    props.editor,
+    "fontColor"
+  ) as LocaleValuesType["fontColor"];
+
   const content = (color: string, bg: string) => {
     if (color) return "A";
     if (bg === NULL_SYMBOL) return <span style={{ color: "grey" }}>×</span>;
@@ -113,13 +122,13 @@ export const colorComps: IBubbleCompsProps = (props) => {
 
   const colorSelect = (
     <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-      <div style={{ fontSize: "12px" }}>字体颜色</div>
+      <div style={{ fontSize: "12px" }}>{locale.color.title}</div>
       <div style={{ display: "flex", gap: "6px" }}>
         {colors.textColor.map((color) => (
           <ColorBox colorString={color} key={color} />
         ))}
       </div>
-      <div style={{ fontSize: "12px" }}>背景颜色</div>
+      <div style={{ fontSize: "12px" }}>{locale.background.title}</div>
       <div style={{ display: "flex", gap: "6px" }}>
         {colors.bgColorsLine1.map((color) => (
           <ColorBox bgString={color} key={color} />
@@ -130,20 +139,15 @@ export const colorComps: IBubbleCompsProps = (props) => {
           <ColorBox bgString={color} key={color} />
         ))}
       </div>
-      <button
-        style={{
-          border: "1px solid silver",
-          borderRadius: "2px",
-          marginRight: "6px",
-        }}
+      <Button
         onClick={() => {
           color.command(NULL_SYMBOL, NULL_SYMBOL);
           setBgColorKey(NULL_SYMBOL);
           setTextColorKey(NULL_SYMBOL);
         }}
       >
-        恢复默认
-      </button>
+        {locale.reset.title}
+      </Button>
     </div>
   );
 

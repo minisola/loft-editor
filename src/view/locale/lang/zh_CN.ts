@@ -59,13 +59,24 @@ const localeValues = {
       title: "插入链接",
     },
   },
+  fontColor: {
+    color: {
+      title: "字体颜色",
+    },
+    background: {
+      title: "背景颜色",
+    },
+    reset: {
+      title: "恢复默认",
+    },
+  },
   placeholder: {
     heading: {
       title: "标题",
     },
-    quickMenu:{
-      title:"输入\"/\" 打开快捷命令"
-    }
+    quickMenu: {
+      title: '输入"/" 打开快捷命令',
+    },
   },
 } as const;
 

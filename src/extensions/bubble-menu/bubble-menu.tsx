@@ -1,5 +1,5 @@
 import { Code } from "lucide-react";
-import { Button, Divider, theme } from "antd";
+import { Button, Divider, Space, theme } from "antd";
 import { BubbleMenu, BubbleMenuProps } from "@tiptap/react";
 import {
   FontBoldIcon,
@@ -107,22 +107,21 @@ export function InlineTools(props: { editor: Editor }) {
   ];
 
   return (
-    <>
+    <Space size={4}>
       {items.map((item) => {
         return (
           <Button
+            className="loft-editor-icon-adapt"
             key={item.name}
             type={item.isActive() ? "primary" : "text"}
             onClick={item.command}
             icon={item.icon}
-          >
-          </Button>
+          ></Button>
         );
       })}
-
       <Divider type="vertical" />
       <BubbleItem comps={linkComps} props={props} />
       <BubbleItem comps={colorComps} props={props} />
-    </>
+    </Space>
   );
 }
