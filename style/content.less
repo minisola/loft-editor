@@ -1,5 +1,6 @@
 .loft-editor-view {
 
+  // reset
   blockquote,
   dl,
   dd,
@@ -18,45 +19,45 @@
 }
 
 .loft-editor-view .ProseMirror {
-  color: var(--tw-prose-body);
+  color: var(--prose-body);
   max-width: 65ch;
 }
 
 .loft-editor-view .ProseMirror {
-  --tw-prose-body: #374151;
-  --tw-prose-headings: #111827;
-  --tw-prose-lead: #4b5563;
-  --tw-prose-links: #111827;
-  --tw-prose-bold: #111827;
-  --tw-prose-counters: #6b7280;
-  --tw-prose-bullets: #d1d5db;
-  --tw-prose-hr: #e5e7eb;
-  --tw-prose-quotes: #111827;
-  --tw-prose-quote-borders: #e5e7eb;
-  --tw-prose-captions: #6b7280;
-  --tw-prose-code: #111827;
-  --tw-prose-pre-code: #e5e7eb;
-  --tw-prose-pre-bg: #1f2937;
-  --tw-prose-th-borders: #d1d5db;
-  --tw-prose-td-borders: #e5e7eb;
-  --tw-prose-invert-body: #d1d5db;
-  --tw-prose-invert-headings: #fff;
-  --tw-prose-invert-lead: #9ca3af;
-  --tw-prose-invert-links: #fff;
-  --tw-prose-invert-bold: #fff;
-  --tw-prose-invert-counters: #9ca3af;
-  --tw-prose-invert-bullets: #4b5563;
-  --tw-prose-invert-hr: #374151;
-  --tw-prose-invert-quotes: #f3f4f6;
-  --tw-prose-invert-quote-borders: #374151;
-  --tw-prose-invert-captions: #9ca3af;
-  --tw-prose-invert-code: #fff;
-  --tw-prose-invert-pre-code: #d1d5db;
-  --tw-prose-invert-pre-bg: rgb(0 0 0 / 50%);
-  --tw-prose-invert-th-borders: #4b5563;
-  --tw-prose-invert-td-borders: #374151;
+  --prose-body: #374151;
+  --prose-headings: #111827;
+  --prose-lead: #4b5563;
+  --prose-links: #111827;
+  --prose-bold: #111827;
+  --prose-counters: #6b7280;
+  --prose-bullets: #d1d5db;
+  --prose-hr: #e5e7eb;
+  --prose-quotes: #111827;
+  --prose-quote-borders: #e5e7eb;
+  --prose-captions: #6b7280;
+  --prose-code: #111827;
+  --prose-pre-code: #e5e7eb;
+  --prose-pre-bg: #1f2937;
+  --prose-th-borders: #d1d5db;
+  --prose-td-borders: #e5e7eb;
+  --prose-invert-body: #d1d5db;
+  --prose-invert-headings: #fff;
+  --prose-invert-lead: #9ca3af;
+  --prose-invert-links: #fff;
+  --prose-invert-bold: #fff;
+  --prose-invert-counters: #9ca3af;
+  --prose-invert-bullets: #4b5563;
+  --prose-invert-hr: #374151;
+  --prose-invert-quotes: #f3f4f6;
+  --prose-invert-quote-borders: #374151;
+  --prose-invert-captions: #9ca3af;
+  --prose-invert-code: #fff;
+  --prose-invert-pre-code: #d1d5db;
+  --prose-invert-pre-bg: rgb(0 0 0 / 50%);
+  --prose-invert-th-borders: #4b5563;
+  --prose-invert-td-borders: #374151;
 
-  font-size: 1rem;
+  font-size: 1em;
   line-height: 1.75;
 }
 
@@ -87,22 +88,22 @@
 }
 
 :is(.dark .loft-editor-view .ProseMirror) {
-  --tw-prose-body: var(--tw-prose-invert-body);
-  --tw-prose-headings: var(--tw-prose-invert-headings);
-  --tw-prose-lead: var(--tw-prose-invert-lead);
-  --tw-prose-links: var(--tw-prose-invert-links);
-  --tw-prose-bold: var(--tw-prose-invert-bold);
-  --tw-prose-counters: var(--tw-prose-invert-counters);
-  --tw-prose-bullets: var(--tw-prose-invert-bullets);
-  --tw-prose-hr: var(--tw-prose-invert-hr);
-  --tw-prose-quotes: var(--tw-prose-invert-quotes);
-  --tw-prose-quote-borders: var(--tw-prose-invert-quote-borders);
-  --tw-prose-captions: var(--tw-prose-invert-captions);
-  --tw-prose-code: var(--tw-prose-invert-code);
-  --tw-prose-pre-code: var(--tw-prose-invert-pre-code);
-  --tw-prose-pre-bg: var(--tw-prose-invert-pre-bg);
-  --tw-prose-th-borders: var(--tw-prose-invert-th-borders);
-  --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
+  --prose-body: var(--prose-invert-body);
+  --prose-headings: var(--prose-invert-headings);
+  --prose-lead: var(--prose-invert-lead);
+  --prose-links: var(--prose-invert-links);
+  --prose-bold: var(--prose-invert-bold);
+  --prose-counters: var(--prose-invert-counters);
+  --prose-bullets: var(--prose-invert-bullets);
+  --prose-hr: var(--prose-invert-hr);
+  --prose-quotes: var(--prose-invert-quotes);
+  --prose-quote-borders: var(--prose-invert-quote-borders);
+  --prose-captions: var(--prose-invert-captions);
+  --prose-code: var(--prose-invert-code);
+  --prose-pre-code: var(--prose-invert-pre-code);
+  --prose-pre-bg: var(--prose-invert-pre-bg);
+  --prose-th-borders: var(--prose-invert-th-borders);
+  --prose-td-borders: var(--prose-invert-td-borders);
 }
 
 .loft-editor-view .ProseMirror:first-child {
@@ -220,7 +221,7 @@
 }
 
 .loft-editor-view .ProseMirror :where([class~="lead"]):not(:where([class~="not-prose"] *)) {
-  color: var(--tw-prose-lead);
+  color: var(--prose-lead);
   font-size: 1.25em;
   line-height: 1.6;
   margin-top: 1.2em;
@@ -228,13 +229,13 @@
 }
 
 .loft-editor-view .ProseMirror :where(a):not(:where([class~="not-prose"] *)) {
-  color: var(--tw-prose-links);
+  color: var(--prose-links);
   text-decoration: underline;
   font-weight: 500;
 }
 
 .loft-editor-view .ProseMirror :where(strong):not(:where([class~="not-prose"] *)) {
-  color: var(--tw-prose-bold);
+  color: var(--prose-bold);
   font-weight: 600;
 }
 
@@ -302,15 +303,15 @@
 
 .loft-editor-view .ProseMirror :where(ol > li):not(:where([class~="not-prose"] *))::marker {
   font-weight: 400;
-  color: var(--tw-prose-counters);
+  color: var(--prose-counters);
 }
 
 .loft-editor-view .ProseMirror :where(ul > li):not(:where([class~="not-prose"] *))::marker {
-  color: var(--tw-prose-bullets);
+  color: var(--prose-bullets);
 }
 
 .loft-editor-view .ProseMirror :where(hr):not(:where([class~="not-prose"] *)) {
-  border-color: var(--tw-prose-hr);
+  border-color: var(--prose-hr);
   border-top-width: 1px;
   margin-top: 3em;
   margin-bottom: 3em;
@@ -319,9 +320,9 @@
 .loft-editor-view .ProseMirror :where(blockquote):not(:where([class~="not-prose"] *)) {
   font-weight: 400;
   font-style: italic;
-  color: var(--tw-prose-quotes);
+  color: var(--prose-quotes);
   border-left-width: 0.25rem;
-  border-left-color: var(--tw-prose-quote-borders);
+  border-left-color: var(--prose-quote-borders);
   quotes: "\201C""\201D""\2018""\2019";
   margin-top: 1.6em;
   margin-bottom: 1.6em;
@@ -337,7 +338,7 @@
 }
 
 .loft-editor-view .ProseMirror :where(h1):not(:where([class~="not-prose"] *)) {
-  color: var(--tw-prose-headings);
+  color: var(--prose-headings);
   font-weight: 800;
   font-size: 2.25em;
   margin-top: 0;
@@ -351,7 +352,7 @@
 }
 
 .loft-editor-view .ProseMirror :where(h2):not(:where([class~="not-prose"] *)) {
-  color: var(--tw-prose-headings);
+  color: var(--prose-headings);
   font-weight: 700;
   font-size: 1.5em;
   margin-top: 2em;
@@ -365,7 +366,7 @@
 }
 
 .loft-editor-view .ProseMirror :where(h3):not(:where([class~="not-prose"] *)) {
-  color: var(--tw-prose-headings);
+  color: var(--prose-headings);
   font-weight: 600;
   font-size: 1.25em;
   margin-top: 1.6em;
@@ -379,7 +380,7 @@
 }
 
 .loft-editor-view .ProseMirror :where(h4):not(:where([class~="not-prose"] *)) {
-  color: var(--tw-prose-headings);
+  color: var(--prose-headings);
   font-weight: 600;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
@@ -402,25 +403,23 @@
 }
 
 .loft-editor-view .ProseMirror :where(figcaption):not(:where([class~="not-prose"] *)) {
-  color: var(--tw-prose-captions);
+  color: var(--prose-captions);
   font-size: 0.875em;
   line-height: 1.4285714;
   margin-top: 0.8571429em;
 }
 
 .loft-editor-view .ProseMirror :where(code):not(:where([class~="not-prose"] *)) {
-  color: var(--tw-prose-code);
-  font-weight: 600;
-  font-size: 0.875em;
+  padding: 2px 4px;
+  background-color: #f5f6f7;
+  background-color: var(--gray-4, #f5f6f7);
+  border: 1px solid #dee0e3;
+  border-color: var(--gray-7, #dee0e3);
+  border-radius: 4px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
-.loft-editor-view .ProseMirror :where(code):not(:where([class~="not-prose"] *))::before {
-  content: "`";
-}
-
-.loft-editor-view .ProseMirror :where(code):not(:where([class~="not-prose"] *))::after {
-  content: "`";
-}
 
 .loft-editor-view .ProseMirror :where(a code):not(:where([class~="not-prose"] *)) {
   color: inherit;
@@ -453,8 +452,8 @@
 }
 
 .loft-editor-view .ProseMirror :where(pre):not(:where([class~="not-prose"] *)) {
-  color: var(--tw-prose-pre-code);
-  background-color: var(--tw-prose-pre-bg);
+  color: var(--prose-pre-code);
+  background-color: var(--prose-pre-bg);
   overflow-x: auto;
   font-weight: 400;
   font-size: 0.875em;
@@ -496,15 +495,12 @@
   margin-bottom: 2em;
   font-size: 0.875em;
   line-height: 1.7142857;
-}
-
-.loft-editor-view .ProseMirror :where(thead):not(:where([class~="not-prose"] *)) {
-  border-bottom-width: 1px;
-  border-bottom-color: var(--tw-prose-th-borders);
+  border-collapse: collapse;
+  border: 1px solid var(--gray-4);
 }
 
 .loft-editor-view .ProseMirror :where(thead th):not(:where([class~="not-prose"] *)) {
-  color: var(--tw-prose-headings);
+  color: var(--prose-headings);
   font-weight: 600;
   vertical-align: bottom;
   padding-right: 0.5714286em;
@@ -512,22 +508,13 @@
   padding-left: 0.5714286em;
 }
 
-.loft-editor-view .ProseMirror :where(tbody tr):not(:where([class~="not-prose"] *)) {
-  border-bottom-width: 1px;
-  border-bottom-color: var(--tw-prose-td-borders);
-}
-
-.loft-editor-view .ProseMirror :where(tbody tr:last-child):not(:where([class~="not-prose"] *)) {
-  border-bottom-width: 0;
-}
-
 .loft-editor-view .ProseMirror :where(tbody td):not(:where([class~="not-prose"] *)) {
   vertical-align: baseline;
+  border: 1px solid var(--gray-4);
 }
 
-.loft-editor-view .ProseMirror :where(tfoot):not(:where([class~="not-prose"] *)) {
-  border-top-width: 1px;
-  border-top-color: var(--tw-prose-th-borders);
+.loft-editor-view .ProseMirror :where(tbody th):not(:where([class~="not-prose"] *)) {
+  border: 1px solid var(--gray-4);
 }
 
 .loft-editor-view .ProseMirror :where(tfoot td):not(:where([class~="not-prose"] *)) {
@@ -535,13 +522,13 @@
 }
 
 .loft-editor-view .ProseMirror :where(video):not(:where([class~="not-prose"] *)) {
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .loft-editor-view .ProseMirror :where(figure):not(:where([class~="not-prose"] *)) {
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .loft-editor-view .ProseMirror :where(li):not(:where([class~="not-prose"] *)) {
