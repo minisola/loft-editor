@@ -33,8 +33,6 @@ export function EditorView(
                 {/* tiptap editorContent */}
                 <EditorContent editor={$editor} {...rest}></EditorContent>
 
-                <TableCellBubbleMenu editor={$editor} />
-
                 {/* plugin views */}
                 {pluginViews.map((Component, index) => {
                   return <Component editor={$editor} key={index}></Component>;

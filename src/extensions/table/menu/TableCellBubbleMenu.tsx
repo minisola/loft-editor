@@ -25,16 +25,14 @@ import { TbCut } from "react-icons/tb";
 import { Divider } from "antd";
 import { CommonBubbleMenu } from "../../bubble-menu/common/CommonBubbleMenu";
 import { IconButton } from "../../../view/Button";
+import { ExtensionDefaultProps } from "../../..";
 
-export type TableCellBubbleMenuProps = {
-  editor: Editor;
-};
 
 export const tableCellBubbleMenuPluginKey = new PluginKey(
   "tableCellBubbleMenu"
 );
 
-export const TableCellBubbleMenu: React.FC<TableCellBubbleMenuProps> = ({
+export const TableCellBubbleMenu: React.FC<ExtensionDefaultProps> = ({
   editor,
 }) => {
   const [selectedCells, setSelectedCells] = useState<any[]>([]);

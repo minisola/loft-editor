@@ -4,7 +4,6 @@ import {
 } from '@tiptap/extension-table-header';
 import { mergeAttributes } from '@tiptap/core';
 
-// TODO: tableHeaderHeight
 export const tableHeaderHeight = 38;
 
 export const TableHeader = TTableHeader.extend<TTableHeaderOptions>({

@@ -13,6 +13,7 @@ import { EditorBubbleMenu } from "../extensions/bubble-menu";
 import { Locale } from "../view/locale/context";
 import localeValues from "../view/locale/default";
 import { ImageBubbleMenu } from "../extensions/image";
+import { TableCellBubbleMenu } from "../extensions/table/menu/TableCellBubbleMenu";
 
 // 初始化slash插件
 const slashExtension = SlashMenuPlugin();
@@ -51,6 +52,8 @@ export class LoftEditor {
     slashExtension.view,
     EditorBubbleMenu,
     ImageBubbleMenu,
+    TableCellBubbleMenu,
+    
   ];
   public ready = false;
   /** 国际化 */

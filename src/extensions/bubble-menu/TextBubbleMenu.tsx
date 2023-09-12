@@ -5,12 +5,12 @@ import {
   FontItalicIcon,
   StrikethroughIcon,
 } from "@radix-ui/react-icons";
-import { Editor } from "@tiptap/core";
+import { Editor, isTextSelection } from "@tiptap/core";
 import BubbleItem from "./BubbleItem";
 import { linkComps } from "./menus/link";
 import { colorComps } from "./menus/color";
 import { InsertTableButton } from "../table";
-import { LuTable,LuCode } from "react-icons/lu";
+import { LuTable, LuCode } from "react-icons/lu";
 import { CommonBubbleMenu } from "./common/CommonBubbleMenu";
 
 type EditorBubbleMenuProps = Omit<BubbleMenuProps, "children">;
@@ -25,25 +25,30 @@ export interface BubbleMenuItem {
 export function EditorBubbleMenu(props: EditorBubbleMenuProps) {
   const bubbleMenuProps: EditorBubbleMenuProps = {
     ...props,
-    shouldShow: ({ editor }) => {
-      if (!editor.isEditable) {
+    shouldShow: ({ editor, view, state, from, to }) => {
+      // 图片、代码、无需弹出
+      if (editor.isActive("image") || editor.isActive("codeBlock")) {
         return false;
       }
-      // 图片、代码、表格无需弹出
+      const { doc, selection } = state;
+      const { empty } = selection;
+
+      const isEmptyTextBlock =
+        !doc.textBetween(from, to).length && isTextSelection(state.selection);
+      const hasEditorFocus = view.hasFocus();
+
       if (
-        editor.isActive("image") ||
-        editor.isActive("codeBlock") ||
-        editor.isActive("table")
+        !hasEditorFocus ||
+        empty ||
+        isEmptyTextBlock ||
+        !isTextSelection(state.selection) ||
+        !editor.isEditable
       ) {
         return false;
       }
-      return editor.view.state.selection.content().size > 0;
-    },
-    tippyOptions: {
-      moveTransition: "transform 0.15s ease-out",
-      onHidden: () => {
-        // setLinkInputOpen(false);
-      },
+
+      const selectionContent = editor.view.state.selection.content();
+      return selectionContent.size > 0;
     },
   };
 
