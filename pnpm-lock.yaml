@@ -188,6 +188,9 @@ importers:
       remark-stringify:
         specifier: ^10.0.3
         version: 10.0.3
+      tippy.js:
+        specifier: ^6.3.7
+        version: 6.3.7
       ts-md5:
         specifier: ^1.3.1
         version: 1.3.1

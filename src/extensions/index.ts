@@ -1,13 +1,8 @@
-import TiptapImage from "@tiptap/extension-image";
 import TiptapTaskItem from "@tiptap/extension-task-item";
 import TiptapTaskList from "@tiptap/extension-task-list";
 import Link from "@tiptap/extension-link";
 import Highlight from "@tiptap/extension-highlight";
 import Typography from "@tiptap/extension-typography";
-import Table from "@tiptap/extension-table";
-import TableCell from "@tiptap/extension-table-cell";
-import TableHeader from "@tiptap/extension-table-header";
-import TableRow from "@tiptap/extension-table-row";
 import Placeholder from "@tiptap/extension-placeholder";
 
 import { Blockquote } from "@tiptap/extension-blockquote";
@@ -36,6 +31,11 @@ import { MarkdownExtension } from "./markdown";
 import { LocaleValuesType } from "../view/locale/lang/zh_CN";
 import { LocaleStore } from "../cacheStore";
 import { Image } from "./image";
+import {
+  Table,
+  TableRow,
+  TableCell,
+} from "./table";
 
 const TaskList = TiptapTaskList.extend({
   parseHTML() {
@@ -90,6 +90,19 @@ Color.configure({
   types: ["textStyle"],
 });
 
+const tableCellContent = [
+  "paragraph",
+  "blockquote",
+  "horizontalRule",
+  "list",
+  "codeBlock",
+  "image",
+];
+
+const TableCellExtension = TableCell.extend({
+  content: `(${tableCellContent.join(" | ")})+`,
+});
+
 export const defaultTiptapExtensions = [
   MarkdownExtension,
   Highlight.configure({ multicolor: true }),
@@ -121,12 +134,7 @@ export const defaultTiptapExtensions = [
   }),
   Image,
   Link,
-  Table,
-  TableHeader,
-  TableRow,
-  TableCell,
   FenseExtension,
-
   Blockquote,
   Bold,
   BulletList,
@@ -144,8 +152,10 @@ export const defaultTiptapExtensions = [
   Paragraph,
   Strike,
   Text,
-
   TextStyle,
   Color,
   Marker,
+  Table,
+  TableRow,
+  TableCellExtension,
 ];

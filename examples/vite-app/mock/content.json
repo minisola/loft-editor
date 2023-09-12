@@ -1,643 +1,643 @@
 {
-    "type": "doc",
-    "content": [
+  "type": "doc",
+  "content": [
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 1
+      },
+      "content": [
         {
-            "type": "heading",
-            "attrs": {
-                "level": 1
-            },
-            "content": [
-                {
-                    "type": "text",
-                    "text": "LoftEditor"
-                }
-            ]
-        },
-        {
-            "type": "paragraph",
-            "content": [
-                {
-                    "type": "text",
-                    "text": "LoftEditor是一个基于react + antd + "
-                },
-                {
-                    "type": "text",
-                    "marks": [
-                        {
-                            "type": "link",
-                            "attrs": {
-                                "href": "https://tiptap.dev/",
-                                "target": "_blank",
-                                "class": null
-                            }
-                        }
-                    ],
-                    "text": "tiptap"
-                },
-                {
-                    "type": "text",
-                    "text": " 的所见即所得的兼容markdown的编辑器，专为创建程序、接口文档内容所开发。"
-                }
-            ]
-        },
-        {
-            "type": "bulletList",
-            "content": [
-                {
-                    "type": "listItem",
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "marks": [
-                                        {
-                                            "type": "bold"
-                                        }
-                                    ],
-                                    "text": "所见即所得编辑"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "：实时预览 Markdown，自定义组件渲染结果，提供直观的编辑体验。"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "listItem",
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "marks": [
-                                        {
-                                            "type": "bold"
-                                        }
-                                    ],
-                                    "text": "Slash 菜单"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "和 "
-                                },
-                                {
-                                    "type": "text",
-                                    "marks": [
-                                        {
-                                            "type": "bold"
-                                        }
-                                    ],
-                                    "text": "Bubble 菜单"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "：通过 Slash 命令菜单和 Bubble 菜单访问常用的格式化选项和命令。"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "listItem",
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "marks": [
-                                        {
-                                            "type": "bold"
-                                        }
-                                    ],
-                                    "text": "支持国际化"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "：可自定义语言"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "paragraph"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "type": "heading",
-            "attrs": {
-                "level": 2
-            },
-            "content": [
-                {
-                    "type": "text",
-                    "text": "安装和使用"
-                }
-            ]
-        },
-        {
-            "type": "orderedList",
-            "attrs": {
-                "start": 1
-            },
-            "content": [
-                {
-                    "type": "listItem",
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "text": "安装依赖项。"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "type": "codeBlock",
-            "attrs": {
-                "language": "shell"
-            },
-            "content": [
-                {
-                    "type": "text",
-                    "text": "npm install LoftEditor"
-                }
-            ]
-        },
-        {
-            "type": "orderedList",
-            "attrs": {
-                "start": 2
-            },
-            "content": [
-                {
-                    "type": "listItem",
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "text": "使用方法"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "type": "codeBlock",
-            "attrs": {
-                "language": "tsx"
-            },
-            "content": [
-                {
-                    "type": "text",
-                    "text": "function App() {\n  const content = JSON.parse(import.meta.env.VITE_CONTENT_STRING);\n  const editorRef = useRef<LoftEditor>();\n\n  useEffect(() => {\n    // 禁止拼写检查\n    const contentDOM = document.getElementById(\"content\");\n    contentDOM!.spellcheck = false;\n  }, []);\n\n  // 上传图片并返回url\n  const onUploadImage: onUploadImageType = async (file: File) => {\n    const res = await uploadImg(file.name, file);\n    return {\n      url: res.url,\n    };\n  };\n\n  return (\n    <div style={{ padding: 25 }}>\n      <div id=\"content\">\n        <EditorRender\n          content={content!}\n          onReady={(editor) => {\n            editorRef.current = editor;\n          }}\n          onUploadImage={onUploadImage}\n        ></EditorRender>\n      </div>\n    </div>\n  );\n}\n\nexport default App;"
-                }
-            ]
-        },
-        {
-            "type": "heading",
-            "attrs": {
-                "level": 2
-            },
-            "content": [
-                {
-                    "type": "text",
-                    "text": "示例"
-                }
-            ]
-        },
-        {
-            "type": "heading",
-            "attrs": {
-                "level": 4
-            },
-            "content": [
-                {
-                    "type": "text",
-                    "text": "图文示例"
-                }
-            ]
-        },
-        {
-            "type": "image",
-            "attrs": {
-                "src": "https://dev-fe-pkg.oss-cn-hangzhou.aliyuncs.com/sl/wallpaper/1693290433756ECvA2Q1c.jpg",
-                "alt": "20230817144208.jpg",
-                "title": "20230817144208.jpg",
-                "width": "100%",
-                "height": "auto",
-                "align": "center"
-            }
-        },
-        {
-            "type": "heading",
-            "attrs": {
-                "level": 3
-            },
-            "content": [
-                {
-                    "type": "text",
-                    "text": "表格示例"
-                }
-            ]
-        },
-        {
-            "type": "table",
-            "content": [
-                {
-                    "type": "tableRow",
-                    "content": [
-                        {
-                            "type": "tableHeader",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "bold"
-                                                }
-                                            ],
-                                            "text": "名称"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "tableHeader",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "bold"
-                                                }
-                                            ],
-                                            "text": "必填"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "tableHeader",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "bold"
-                                                }
-                                            ],
-                                            "text": "类型"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "tableHeader",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "bold"
-                                                }
-                                            ],
-                                            "text": "描述"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "tableRow",
-                    "content": [
-                        {
-                            "type": "tableCell",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "bold"
-                                                }
-                                            ],
-                                            "text": "Authorization"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "tableCell",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "text": "✅"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "tableCell",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "text": "string"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "tableCell",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "bold"
-                                                }
-                                            ],
-                                            "text": "tenant_access_token"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "bold"
-                                                }
-                                            ],
-                                            "text": "值格式"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": "：\"Bearer "
-                                        },
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "code"
-                                                }
-                                            ],
-                                            "text": "access_token"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": "\""
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "bold"
-                                                }
-                                            ],
-                                            "text": "示例值"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": "：\"Bearer t-7f1bcd13fc57d46bac21793a18e560\""
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "link",
-                                                    "attrs": {
-                                                        "href": "https://open.feishu.cn/document/uAjLw4CM/ugTN1YjL4UTN24CO1UjN/trouble-shooting/how-to-choose-which-type-of-token-to-use",
-                                                        "target": "_blank",
-                                                        "class": "internal-link"
-                                                    }
-                                                }
-                                            ],
-                                            "text": "了解更多：如何选择与获取 access token"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "tableRow",
-                    "content": [
-                        {
-                            "type": "tableCell",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "bold"
-                                                },
-                                                {
-                                                    "type": "textStyle",
-                                                    "attrs": {
-                                                        "color": "rgb(55, 60, 67)"
-                                                    }
-                                                }
-                                            ],
-                                            "text": "Content-Type"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "tableCell",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "text": "-"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "tableCell",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "textStyle",
-                                                    "attrs": {
-                                                        "color": "rgb(55, 60, 67)"
-                                                    }
-                                                }
-                                            ],
-                                            "text": "string"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "tableCell",
-                            "attrs": {
-                                "colspan": 1,
-                                "rowspan": 1,
-                                "colwidth": null
-                            },
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "bold"
-                                                }
-                                            ],
-                                            "text": "固定值"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "textStyle",
-                                                    "attrs": {
-                                                        "color": "rgb(55, 60, 67)"
-                                                    }
-                                                }
-                                            ],
-                                            "text": "：\"application/json; charset=utf-8\""
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+          "type": "text",
+          "text": "LoftEditor"
         }
-    ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "LoftEditor是一个基于react + antd + "
+        },
+        {
+          "type": "text",
+          "marks": [
+            {
+              "type": "link",
+              "attrs": {
+                "href": "https://tiptap.dev/",
+                "target": "_blank",
+                "class": null
+              }
+            }
+          ],
+          "text": "tiptap"
+        },
+        {
+          "type": "text",
+          "text": " 的所见即所得的兼容markdown的编辑器，专为创建程序、接口文档内容所开发。"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ],
+                  "text": "所见即所得编辑"
+                },
+                {
+                  "type": "text",
+                  "text": "：实时预览 Markdown，自定义组件渲染结果，提供直观的编辑体验。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ],
+                  "text": "Slash 菜单"
+                },
+                {
+                  "type": "text",
+                  "text": "和 "
+                },
+                {
+                  "type": "text",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ],
+                  "text": "Bubble 菜单"
+                },
+                {
+                  "type": "text",
+                  "text": "：通过 Slash 命令菜单和 Bubble 菜单访问常用的格式化选项和命令。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ],
+                  "text": "支持国际化"
+                },
+                {
+                  "type": "text",
+                  "text": "：可自定义语言"
+                }
+              ]
+            },
+            {
+              "type": "paragraph"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "安装和使用"
+        }
+      ]
+    },
+    {
+      "type": "orderedList",
+      "attrs": {
+        "start": 1
+      },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "安装依赖项。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "codeBlock",
+      "attrs": {
+        "language": "shell"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "npm install LoftEditor"
+        }
+      ]
+    },
+    {
+      "type": "orderedList",
+      "attrs": {
+        "start": 2
+      },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "使用方法"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "codeBlock",
+      "attrs": {
+        "language": "tsx"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "function App() {\n  const content = JSON.parse(import.meta.env.VITE_CONTENT_STRING);\n  const editorRef = useRef<LoftEditor>();\n\n  useEffect(() => {\n    // 禁止拼写检查\n    const contentDOM = document.getElementById(\"content\");\n    contentDOM!.spellcheck = false;\n  }, []);\n\n  // 上传图片并返回url\n  const onUploadImage: onUploadImageType = async (file: File) => {\n    const res = await uploadImg(file.name, file);\n    return {\n      url: res.url,\n    };\n  };\n\n  return (\n    <div style={{ padding: 25 }}>\n      <div id=\"content\">\n        <EditorRender\n          content={content!}\n          onReady={(editor) => {\n            editorRef.current = editor;\n          }}\n          onUploadImage={onUploadImage}\n        ></EditorRender>\n      </div>\n    </div>\n  );\n}\n\nexport default App;"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "示例"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "图文示例"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "attrs": {
+        "src": "https://dev-fe-pkg.oss-cn-hangzhou.aliyuncs.com/sl/wallpaper/1693290433756ECvA2Q1c.jpg",
+        "alt": "20230817144208.jpg",
+        "title": "20230817144208.jpg",
+        "width": "100%",
+        "height": "auto",
+        "align": "center"
+      }
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "表格示例"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "content": [
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "名称"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "必填"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "类型"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "描述"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "Authorization"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "✅"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "string"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "tenant_access_token"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "值格式"
+                    },
+                    {
+                      "type": "text",
+                      "text": "：\"Bearer "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "code"
+                        }
+                      ],
+                      "text": "access_token"
+                    },
+                    {
+                      "type": "text",
+                      "text": "\""
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "示例值"
+                    },
+                    {
+                      "type": "text",
+                      "text": "：\"Bearer t-7f1bcd13fc57d46bac21793a18e560\""
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://open.feishu.cn/document/uAjLw4CM/ugTN1YjL4UTN24CO1UjN/trouble-shooting/how-to-choose-which-type-of-token-to-use",
+                            "target": "_blank",
+                            "class": "internal-link"
+                          }
+                        }
+                      ],
+                      "text": "了解更多：如何选择与获取 access token"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        },
+                        {
+                          "type": "textStyle",
+                          "attrs": {
+                            "color": "rgb(55, 60, 67)"
+                          }
+                        }
+                      ],
+                      "text": "Content-Type"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "-"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "textStyle",
+                          "attrs": {
+                            "color": "rgb(55, 60, 67)"
+                          }
+                        }
+                      ],
+                      "text": "string"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "colwidth": null
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "固定值"
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "textStyle",
+                          "attrs": {
+                            "color": "rgb(55, 60, 67)"
+                          }
+                        }
+                      ],
+                      "text": "：\"application/json; charset=utf-8\""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

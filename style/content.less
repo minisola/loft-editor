@@ -188,6 +188,12 @@
   height: 0;
 }
 
+.loft-editor-view .ProseMirror .is-empty {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .loft-editor-view .ProseMirror .is-empty::before {
   content: attr(data-placeholder);
   float: left;
@@ -475,7 +481,7 @@
   font-weight: inherit;
   color: inherit;
   font-size: inherit;
-  font-family: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   line-height: inherit;
 }
 

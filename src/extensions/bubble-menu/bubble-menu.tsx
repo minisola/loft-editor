@@ -10,6 +10,7 @@ import { Editor } from "@tiptap/core";
 import BubbleItem from "./BubbleItem";
 import { linkComps } from "./menus/link";
 import { colorComps } from "./menus/color";
+import { InsertTableButton } from "../table";
 
 type EditorBubbleMenuProps = Omit<BubbleMenuProps, "children">;
 
@@ -122,6 +123,9 @@ export function InlineTools(props: { editor: Editor }) {
       <Divider type="vertical" />
       <BubbleItem comps={linkComps} props={props} />
       <BubbleItem comps={colorComps} props={props} />
+      <InsertTableButton editor={props.editor}>
+        <Button>表格</Button>
+      </InsertTableButton>
     </Space>
   );
 }

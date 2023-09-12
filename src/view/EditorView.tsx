@@ -8,6 +8,7 @@ import { LoftEditor } from "../Editor/LoftEditor";
 import { Toolbar } from "../toolbar";
 import LocaleProvider from "./locale/provider";
 import { Outline } from "./OutlineView";
+import { TableCellBubbleMenu } from "../extensions/table";
 
 export function EditorView(
   props: {
@@ -31,6 +32,9 @@ export function EditorView(
                 </div>
                 {/* tiptap editorContent */}
                 <EditorContent editor={$editor} {...rest}></EditorContent>
+
+                <TableCellBubbleMenu editor={$editor} />
+
                 {/* plugin views */}
                 {pluginViews.map((Component, index) => {
                   return <Component editor={$editor} key={index}></Component>;
