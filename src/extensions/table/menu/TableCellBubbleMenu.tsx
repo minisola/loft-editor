@@ -230,23 +230,21 @@ export const TableCellBubbleMenu: React.FC<TableCellBubbleMenuProps> = ({
       tippyOptions={tippyOptions}
       updateDelay={0}
     >
-      <div className="tide-menu-bar tide-menu-bar-bubble">
-        {selectedState.tableSelected ? (
-          <>
-            {copyAndCutItems}
-            <Divider type="vertical" />
-            {deleteButton}
-          </>
-        ) : (
-          <>
-            {mergeOrSplitItems}
-            {mergeOrSplitItems && <Divider type="vertical" />}
-            {textAlignItems}
-            {deleteButton && <Divider type="vertical" />}
-            {deleteButton}
-          </>
-        )}
-      </div>
+      {selectedState.tableSelected ? (
+        <>
+          {copyAndCutItems}
+          <Divider type="vertical" />
+          {deleteButton}
+        </>
+      ) : (
+        <>
+          {mergeOrSplitItems}
+          {mergeOrSplitItems && <Divider type="vertical" />}
+          {textAlignItems}
+          {deleteButton && <Divider type="vertical" />}
+          {deleteButton}
+        </>
+      )}
     </CommonBubbleMenu>
   );
 };

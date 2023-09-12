@@ -1,5 +1,5 @@
-import classNames from 'classnames';
-import React, { useState } from 'react';
+import classNames from "classnames";
+import React, { useState } from "react";
 
 export type TableGridProps = {
   rows: number;
@@ -21,7 +21,7 @@ export const TableGrid: React.FC<TableGridProps> = ({
   }
   return (
     <div
-      className="tide-editor-table-grid"
+      className="insert-table-grid"
       onMouseLeave={() => {
         setSelectedRows(0);
         setSelectedColumns(0);
@@ -30,12 +30,12 @@ export const TableGrid: React.FC<TableGridProps> = ({
       onClick={() => onClick?.(selectedRows, selectedColumns)}
     >
       {Array.from({ length: rows }, (_, i) => (
-        <div key={`row-${i}`} className="tide-editor-table-grid__row">
+        <div key={`row-${i}`} className="insert-table-grid-row">
           {Array.from({ length: columns }, (_, j) => (
             <div
               key={`cell-${i}-${j}`}
-              className={classNames('tide-editor-table-grid__cell', {
-                ['tide-editor-table-grid__cell--selected']:
+              className={classNames("insert-table-grid-cell", {
+                ["insert-table-grid-cell-selected"]:
                   i + 1 <= selectedRows && j + 1 <= selectedColumns,
               })}
               onMouseOver={() => {

@@ -194,10 +194,14 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
       icon: <TableIcon />,
       command: ({ editor, range }: CommandProps) =>
         editor
-          .chain()
+          ?.chain()
           .focus()
           .deleteRange(range)
-          .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+          .insertTable?.({
+            rows: 2,
+            cols: 2,
+            withHeaderRow: false,
+          })
           .run(),
     },
   ];

@@ -40,10 +40,10 @@ export const InsertTableButton: React.FC<InsertTableButtonProps> = ({
         getPopupContainer={() => containerRef.current || document.body}
         align={{ offset: [8, 10] }}
         content={
-          <div className="tide-editor-popup tide-insert-table-popup">
-            <div className="tide-insert-table-popup__header">
+          <div className="insert-table-popover">
+            <div className="insert-table-popover-header">
               <span>{locale.toolPane.title}</span>
-              <span className="tide-insert-table-popup__size">
+              <span className="insert-table-popover-size">
                 {size.rows > 0 &&
                   size.columns > 0 &&
                   `${size.columns} x ${size.rows}`}
