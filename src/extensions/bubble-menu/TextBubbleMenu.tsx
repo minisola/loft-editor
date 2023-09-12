@@ -1,6 +1,5 @@
-import { Code } from "lucide-react";
-import { Button, Divider, Space, theme } from "antd";
-import { BubbleMenu, BubbleMenuProps } from "@tiptap/react";
+import { Button, Divider, Space } from "antd";
+import { BubbleMenuProps } from "@tiptap/react";
 import {
   FontBoldIcon,
   FontItalicIcon,
@@ -11,6 +10,8 @@ import BubbleItem from "./BubbleItem";
 import { linkComps } from "./menus/link";
 import { colorComps } from "./menus/color";
 import { InsertTableButton } from "../table";
+import { LuTable,LuCode } from "react-icons/lu";
+import { CommonBubbleMenu } from "./common/CommonBubbleMenu";
 
 type EditorBubbleMenuProps = Omit<BubbleMenuProps, "children">;
 
@@ -22,16 +23,18 @@ export interface BubbleMenuItem {
 }
 
 export function EditorBubbleMenu(props: EditorBubbleMenuProps) {
-  const { token } = theme.useToken();
-
   const bubbleMenuProps: EditorBubbleMenuProps = {
     ...props,
     shouldShow: ({ editor }) => {
       if (!editor.isEditable) {
         return false;
       }
-      // 图片、代码无需弹出
-      if (editor.isActive("image") || editor.isActive("codeBlock")) {
+      // 图片、代码、表格无需弹出
+      if (
+        editor.isActive("image") ||
+        editor.isActive("codeBlock") ||
+        editor.isActive("table")
+      ) {
         return false;
       }
       return editor.view.state.selection.content().size > 0;
@@ -45,29 +48,9 @@ export function EditorBubbleMenu(props: EditorBubbleMenuProps) {
   };
 
   return (
-    <BubbleMenu
-      {...bubbleMenuProps}
-      tippyOptions={{ maxWidth: "none", appendTo: "parent" }}
-    >
-      <div
-        className="loft-editor-bubble-menu"
-        style={{
-          paddingTop: token.paddingXS,
-          paddingBottom: token.paddingXS,
-          paddingLeft: token.paddingSM,
-          paddingRight: token.paddingSM,
-          borderRadius: token.borderRadius,
-          boxShadow: token.boxShadow,
-          backgroundColor: token.colorBgElevated,
-        }}
-        onMouseDown={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-        }}
-      >
-        <InlineTools editor={props.editor} />
-      </div>
-    </BubbleMenu>
+    <CommonBubbleMenu {...bubbleMenuProps}>
+      <InlineTools editor={props.editor} />
+    </CommonBubbleMenu>
   );
 }
 
@@ -103,7 +86,7 @@ export function InlineTools(props: { editor: Editor }) {
       name: "code",
       isActive: () => props.editor.isActive("code"),
       command: () => props.editor.chain().focus().toggleCode().run(),
-      icon: <Code style={{ width: 14, height: 14 }} />,
+      icon: <LuCode style={{ width: 14, height: 14 }} />,
     },
   ];
 
@@ -124,7 +107,11 @@ export function InlineTools(props: { editor: Editor }) {
       <BubbleItem comps={linkComps} props={props} />
       <BubbleItem comps={colorComps} props={props} />
       <InsertTableButton editor={props.editor}>
-        <Button>表格</Button>
+        <Button
+          type={"text"}
+          className="loft-editor-icon-adapt"
+          icon={<LuTable />}
+        ></Button>
       </InsertTableButton>
     </Space>
   );

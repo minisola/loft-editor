@@ -4,7 +4,7 @@ export * from "./Editor/useLoftEditor";
 export * from "./cacheStore";
 export * from "./modifier";
 
-export * from "./view/OutlineView";
+export * from "./view/Outline";
 
 export * from "./view/locale"
 

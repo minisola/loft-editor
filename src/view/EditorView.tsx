@@ -7,7 +7,7 @@ import React from "react";
 import { LoftEditor } from "../Editor/LoftEditor";
 import { Toolbar } from "../toolbar";
 import LocaleProvider from "./locale/provider";
-import { Outline } from "./OutlineView";
+import { Outline } from "./Outline";
 import { TableCellBubbleMenu } from "../extensions/table";
 
 export function EditorView(

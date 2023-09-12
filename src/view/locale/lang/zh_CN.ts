@@ -78,6 +78,11 @@ const localeValues = {
       title: '输入"/" 打开快捷命令',
     },
   },
+  table:{
+    toolPane:{
+      title:"插入表格"
+    }
+  }
 } as const;
 
 export type LocaleValuesType = typeof localeValues;

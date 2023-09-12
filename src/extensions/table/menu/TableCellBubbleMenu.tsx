@@ -1,9 +1,8 @@
 import React, { useCallback, useRef, useState } from "react";
 import { sticky } from "tippy.js";
-import Tippy from "@tippyjs/react";
 import { PluginKey } from "@tiptap/pm/state";
 import { Editor, posToDOMRect } from "@tiptap/core";
-import { BubbleMenu, BubbleMenuProps } from "@tiptap/react";
+import { BubbleMenuProps } from "@tiptap/react";
 import {
   getCellsInColumn,
   getCellsInRow,
@@ -13,6 +12,19 @@ import {
   isRowSelected,
   isTableSelected,
 } from "../utilities";
+import {
+  LuAlignCenter,
+  LuAlignLeft,
+  LuAlignRight,
+  LuCopy,
+  LuTrash2,
+} from "react-icons/lu";
+import { RiMergeCellsHorizontal, RiSplitCellsHorizontal } from "react-icons/ri";
+import { AiOutlineDeleteColumn, AiOutlineDeleteRow } from "react-icons/ai";
+import { TbCut } from "react-icons/tb";
+import { Divider } from "antd";
+import { CommonBubbleMenu } from "../../bubble-menu/common/CommonBubbleMenu";
+import { IconButton } from "../../../view/Button";
 
 export type TableCellBubbleMenuProps = {
   editor: Editor;
@@ -111,7 +123,6 @@ export const TableCellBubbleMenu: React.FC<TableCellBubbleMenuProps> = ({
       return [0, 8];
     },
     arrow: false,
-    appendTo: () => editor.options.element,
     getReferenceClientRect: () => {
       const { state, view } = editor;
       const { from, to } = state.selection;
@@ -143,147 +154,76 @@ export const TableCellBubbleMenu: React.FC<TableCellBubbleMenuProps> = ({
   const canSplitCell = editor.can().splitCell?.();
   const canMergeCells = editor.can().mergeCells?.();
 
-  const divider = <span className="tide-menu-bar__divider" />;
-
   const mergeOrSplitItems = ((selectedCellsCount > 1 && canMergeCells) ||
     canSplitCell) && (
-    <Tippy
-      interactive
-      content={
-        <div className={"tide-menu-bar__tooltip"}>
-          {canSplitCell ? "拆分" : "合并"}
-        </div>
+    <IconButton
+      onClick={() => editor.commands.mergeOrSplit()}
+      icon={
+        canSplitCell ? <RiSplitCellsHorizontal /> : <RiMergeCellsHorizontal />
       }
-    >
-      <button
-        className="tide-menu-bar__btn tide-menu-bar__item"
-        onClick={() => editor.commands.mergeOrSplit()}
-      >
-        {canSplitCell ? (
-          <span>IconCellSplitBold</span>
-        ) : (
-          <span>IconCellMergeBold</span>
-        )}
-      </button>
-    </Tippy>
+    ></IconButton>
   );
 
   const textAlignItems = (
     <>
-      <Tippy
-        interactive
-        content={<div className={"tide-menu-bar__tooltip"}>居左</div>}
-      >
-        <button
-          className="tide-menu-bar__btn tide-menu-bar__item"
-          onClick={() => (editor.commands as any).unsetTextAlign?.()}
-        >
-          <span>IconAlignLeftBold</span>
-        </button>
-      </Tippy>
-      <Tippy
-        interactive
-        content={<div className={"tide-menu-bar__tooltip"}>居中</div>}
-      >
-        <button
-          className="tide-menu-bar__btn tide-menu-bar__item"
-          onClick={() => (editor.commands as any).setTextAlign?.("center")}
-        >
-          <span>IconAlignCenterBold</span>
-        </button>
-      </Tippy>
-      <Tippy
-        interactive
-        content={<div className={"tide-menu-bar__tooltip"}>居右</div>}
-      >
-        <button
-          className="tide-menu-bar__btn tide-menu-bar__item"
-          onClick={() => (editor.commands as any).setTextAlign?.("right")}
-        >
-          <span>IconAlignRightBold</span>
-        </button>
-      </Tippy>
+      <IconButton
+        onClick={() => (editor.commands as any).unsetTextAlign?.()}
+        icon={<LuAlignLeft />}
+      ></IconButton>
+      <IconButton
+        onClick={() => (editor.commands as any).setTextAlign?.("center")}
+        icon={<LuAlignCenter />}
+      ></IconButton>
+      <IconButton
+        onClick={() => (editor.commands as any).setTextAlign?.("right")}
+        icon={<LuAlignRight />}
+      ></IconButton>
     </>
   );
 
   let deleteButton = null;
   if (selectedState.tableSelected) {
     deleteButton = (
-      <Tippy
-        interactive
-        content={<div className={"tide-menu-bar__tooltip"}>删除表格</div>}
-      >
-        <button
-          className="tide-menu-bar__btn tide-menu-bar__item"
-          onClick={() => editor.commands.deleteTable()}
-        >
-          <span>IconTrashBold</span>
-        </button>
-      </Tippy>
+      <IconButton
+        onClick={() => editor.commands.deleteTable()}
+        icon={<LuTrash2 />}
+      ></IconButton>
     );
   } else if (selectedState.rowSelected) {
     deleteButton = (
-      <Tippy
-        interactive
-        content={<div className={"tide-menu-bar__tooltip"}>删除行</div>}
-      >
-        <button
-          className="tide-menu-bar__btn tide-menu-bar__item"
-          onClick={() => editor.commands.deleteRow()}
-        >
-          <span>IconTrashBold</span>
-        </button>
-      </Tippy>
+      <IconButton
+        onClick={() => editor.commands.deleteRow()}
+        icon={<AiOutlineDeleteRow />}
+      ></IconButton>
     );
   } else if (selectedState.columnSelected) {
     deleteButton = (
-      <Tippy
-        interactive
-        content={<div className={"tide-menu-bar__tooltip"}>删除列</div>}
-      >
-        <button
-          className="tide-menu-bar__btn tide-menu-bar__item"
-          onClick={() => editor.commands.deleteColumn()}
-        >
-          <span>IconTrashBold</span>
-        </button>
-      </Tippy>
+      <IconButton
+        onClick={() => editor.commands.deleteColumn()}
+        icon={<AiOutlineDeleteColumn />}
+      ></IconButton>
     );
   }
 
   const copyAndCutItems = (
     <>
-      <Tippy
-        interactive
-        content={<div className={"tide-menu-bar__tooltip"}>复制</div>}
-      >
-        <button
-          className="tide-menu-bar__btn tide-menu-bar__item"
-          onClick={() => document.execCommand("copy")}
-        >
-          <span>IconCopyBold</span>
-        </button>
-      </Tippy>
-      <Tippy
-        interactive
-        content={<div className={"tide-menu-bar__tooltip"}>剪切</div>}
-      >
-        <button
-          className="tide-menu-bar__btn tide-menu-bar__item"
-          onClick={() => {
-            document.execCommand("cut");
-            editor.commands.deleteTable();
-            editor.commands.focus();
-          }}
-        >
-          <span>cutbold</span>
-        </button>
-      </Tippy>
+      <IconButton
+        onClick={() => document.execCommand("copy")}
+        icon={<LuCopy />}
+      ></IconButton>
+      <IconButton
+        onClick={() => {
+          document.execCommand("cut");
+          editor.commands.deleteTable();
+          editor.commands.focus();
+        }}
+        icon={<TbCut />}
+      ></IconButton>
     </>
   );
 
   return (
-    <BubbleMenu
+    <CommonBubbleMenu
       pluginKey={tableCellBubbleMenuPluginKey}
       editor={editor}
       shouldShow={shouldShow}
@@ -294,19 +234,19 @@ export const TableCellBubbleMenu: React.FC<TableCellBubbleMenuProps> = ({
         {selectedState.tableSelected ? (
           <>
             {copyAndCutItems}
-            {divider}
+            <Divider type="vertical" />
             {deleteButton}
           </>
         ) : (
           <>
             {mergeOrSplitItems}
-            {mergeOrSplitItems && divider}
+            {mergeOrSplitItems && <Divider type="vertical" />}
             {textAlignItems}
-            {deleteButton && divider}
+            {deleteButton && <Divider type="vertical" />}
             {deleteButton}
           </>
         )}
       </div>
-    </BubbleMenu>
+    </CommonBubbleMenu>
   );
 };

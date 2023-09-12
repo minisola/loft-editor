@@ -19,7 +19,6 @@ import { mergeAttributes } from '@tiptap/core';
 
 export type TableCellOptions = TTableCellOptions;
 
-// TODO: tableCellHeight
 export const tableCellHeight = 38;
 
 export const TableCell = TTableCell.extend<TTableCellOptions>({

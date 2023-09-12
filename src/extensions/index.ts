@@ -25,17 +25,14 @@ import { Text } from "@tiptap/extension-text";
 import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import Marker from "@yaskevich/extension-marker";
+import { TextAlign } from "@tiptap/extension-text-align";
 
 import { FenseExtension } from "./fense";
 import { MarkdownExtension } from "./markdown";
 import { LocaleValuesType } from "../view/locale/lang/zh_CN";
 import { LocaleStore } from "../cacheStore";
 import { Image } from "./image";
-import {
-  Table,
-  TableRow,
-  TableCell,
-} from "./table";
+import { Table, TableRow, TableCell } from "./table";
 
 const TaskList = TiptapTaskList.extend({
   parseHTML() {
@@ -158,4 +155,7 @@ export const defaultTiptapExtensions = [
   Table,
   TableRow,
   TableCellExtension,
+  TextAlign.configure({
+    types: ["heading", "paragraph"],
+  }),
 ];

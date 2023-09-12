@@ -2,11 +2,7 @@ import React, { useCallback } from "react";
 import { isNodeSelection, posToDOMRect } from "@tiptap/core";
 import { CellSelection } from "@tiptap/pm/tables";
 import { BubbleMenu } from "@tiptap/react";
-import {
-  AiOutlineAlignCenter,
-  AiOutlineAlignLeft,
-  AiOutlineAlignRight,
-} from "react-icons/ai";
+import { LuAlignCenter, LuAlignLeft, LuAlignRight } from "react-icons/lu";
 import { ExtensionDefaultProps } from "../../../Editor/LoftEditor";
 import { Button, theme } from "antd";
 
@@ -69,29 +65,29 @@ export const ImageBubbleMenu: React.FC<ExtensionDefaultProps> = ({
         }}
       >
         <Button
+          className="loft-editor-icon-adapt"
           type="text"
+          icon={<LuAlignLeft />}
           onClick={() => {
             editor.chain().updateImageAttr({ align: "left" }).run();
           }}
-        >
-          <AiOutlineAlignLeft />
-        </Button>
+        ></Button>
         <Button
+          className="loft-editor-icon-adapt"
           type="text"
+          icon={<LuAlignCenter />}
           onClick={() => {
             editor.chain().updateImageAttr({ align: "center" }).run();
           }}
-        >
-          <AiOutlineAlignCenter />
-        </Button>
+        ></Button>
         <Button
+          className="loft-editor-icon-adapt"
           type="text"
+          icon={<LuAlignRight />}
           onClick={() => {
             editor.chain().updateImageAttr({ align: "right" }).run();
           }}
-        >
-          <AiOutlineAlignRight />
-        </Button>
+        ></Button>
       </div>
     </BubbleMenu>
   );
