@@ -8,23 +8,20 @@ export type ToolbarProps = React.PropsWithChildren<{
 
 export function Toolbar(props: ToolbarProps) {
   const { token } = theme.useToken();
-
   return (
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          borderRadius: token.borderRadius,
-          padding: token.paddingXS,
-          backgroundColor: token.colorBgElevated,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div className="toolbar-inline-tools">
-            <InlineTools editor={props.editor} />
-          </div>
-        </div>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        borderRadius: token.borderRadius,
+        padding: token.paddingXS,
+        backgroundColor: token.colorBgElevated,
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <InlineTools editor={props.editor} />
       </div>
+    </div>
   );
 }

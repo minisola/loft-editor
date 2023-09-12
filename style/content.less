@@ -1,4 +1,5 @@
 .loft-editor-view {
+
   // reset
   blockquote,
   dl,
@@ -620,4 +621,11 @@
 
 .loft-editor-view .ProseMirror :where(.prose > :last-child):not(:where([class~="not-prose"] *)) {
   margin-bottom: 0;
+}
+
+
+// 拖放位置指示线
+.prosemirror-dropcursor-block {
+  height: 2px !important;
+  background-color: rgba(44, 126, 248, 1) !important;
 }

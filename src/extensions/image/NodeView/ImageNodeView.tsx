@@ -81,6 +81,7 @@ const ImageNodeView: React.FC<NodeViewProps> = ({
                   item.className
                 )}
                 onMouseDown={(e) => {
+                  e.preventDefault();
                   selectImage();
                   onMousedown(item.position, e);
                 }}

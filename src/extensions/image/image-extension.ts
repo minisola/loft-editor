@@ -21,7 +21,6 @@ export const inputRegex =
 
 export const Image = TImage.extend<ImageOptions>({
   name: "image",
-
   addOptions() {
     return {
       inline: false,
@@ -31,7 +30,7 @@ export const Image = TImage.extend<ImageOptions>({
   },
 
   atom: true,
-  draggable: false,
+  draggable: true,
   selectable: true,
 
   allowGapCursor() {
@@ -82,7 +81,6 @@ export const Image = TImage.extend<ImageOptions>({
   addCommands() {
     return {
       ...this.parent?.(),
-
       updateImageAttr:
         (attributes) =>
         ({ commands }) => {
@@ -102,7 +100,6 @@ export const Image = TImage.extend<ImageOptions>({
         type: this.type,
         getAttributes: (match) => {
           const [, , alt, src, title] = match;
-
           return { src, alt, title };
         },
       }),

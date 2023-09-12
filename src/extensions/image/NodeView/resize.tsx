@@ -53,7 +53,6 @@ export const useResize = (
       if (store.resizing && store.focus) {
         // 鼠标移动距离
         const distanceX = event.clientX - store.clientX;
-        // const distanceY = event.clientY - store.clientY;
         const moveDirection = distanceX;
 
         // 变化的尺寸
@@ -91,7 +90,6 @@ export const useResize = (
         }
 
         width = store.originWidth + Math.abs(distanceX) * scale;
-        // height = store.imageHeight + distanceY * scale;
 
         // 目标尺寸
         let imageWidth = 0;
@@ -100,16 +98,9 @@ export const useResize = (
         // 图像的原始比例
         const ratio = store.originWidth / store.originHeight;
 
-        // // 选择移动距离大的方向
-        // if (Math.abs(distanceX) > Math.abs(distanceY)) {
         // 宽度变化为主
         imageWidth = width;
         imageHeight = width / ratio;
-        // } else {
-        //   // 高度变化为主
-        //   imageHeight = height;
-        //   imageWidth = height * ratio;
-        // }
 
         if (imageWidth >= store.maxWidth) return;
         if (imageWidth < store.minWidth) return;
