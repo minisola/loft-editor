@@ -9,25 +9,16 @@ import {
 } from '@tiptap/pm/tables';
 import { Editor } from '@tiptap/core';
 
-/**
- * @public
- */
 export interface CellAttrs {
   colspan: number;
   rowspan: number;
   colwidth: number[] | null;
 }
 
-/**
- * @public
- */
 export const columnResizingPluginKey = new PluginKey<ResizeState>(
   'tableColumnResizing'
 );
 
-/**
- * @public
- */
 export type ColumnResizingOptions = {
   editor?: Editor;
   handleWidth?: number;
@@ -35,14 +26,8 @@ export type ColumnResizingOptions = {
   lastColumnResizable?: boolean;
 };
 
-/**
- * @public
- */
 export type Dragging = { startX: number; startWidth: number };
 
-/**
- * @public
- */
 export function columnResizing({
   editor,
   handleWidth = 5,
@@ -104,9 +89,6 @@ export function columnResizing({
   return plugin;
 }
 
-/**
- * @public
- */
 export class ResizeState {
   constructor(public activeHandle: number, public dragging: Dragging | false) {}
 

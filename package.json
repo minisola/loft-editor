@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "run-p dev:ts dev:sample",
     "dev:ts": "father dev -w",
-    "dev:css": "tailwindcss -i ./style/index.css -o ./dist/style.css -w",
     "dev:sample": "cd examples/vite-app && pnpm run dev",
     "build": "father build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"

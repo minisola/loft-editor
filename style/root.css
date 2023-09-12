@@ -32,34 +32,6 @@
   --mp-background: var(--mp-1);
 }
 
-.dark {
-  /* @radix-ui/colors violetDark */
-  --mp-1: hsl(250, 20%, 10.2%);
-  --mp-2: hsl(255, 30.3%, 12.9%);
-  --mp-3: hsl(253, 37%, 18.4%);
-  --mp-4: hsl(252, 40.1%, 22.5%);
-  --mp-5: hsl(252, 42.2%, 26.2%);
-  --mp-6: hsl(251, 44.3%, 31.1%);
-  --mp-7: hsl(250, 46.8%, 38.9%);
-  --mp-8: hsl(250, 51.8%, 51.2%);
-  --mp-9: hsl(252, 56%, 57.5%);
-  --mp-10: hsl(251, 63.2%, 63.2%);
-  --mp-11: hsl(250, 95%, 76.8%);
-  --mp-12: hsl(252, 87%, 96.4%);
-
-  --mp-gray-1: hsl(0, 0%, 8.5%);
-  --mp-gray-2: hsl(0, 0%, 11%);
-  --mp-gray-3: hsl(0, 0%, 13.6%);
-  --mp-gray-4: hsl(0, 0%, 15.8%);
-  --mp-gray-5: hsl(0, 0%, 17.9%);
-  --mp-gray-6: hsl(0, 0%, 20.5%);
-  --mp-gray-7: hsl(0, 0%, 24.3%);
-  --mp-gray-8: hsl(0, 0%, 31.2%);
-  --mp-gray-9: hsl(0, 0%, 43.9%);
-  --mp-gray-10: hsl(0, 0%, 49.4%);
-  --mp-gray-11: hsl(0, 0%, 62.8%);
-  --mp-gray-12: hsl(0, 0%, 93%);
-}
 .loft-editor-view.inline-style {
   padding-top: 0;
   box-shadow: none;

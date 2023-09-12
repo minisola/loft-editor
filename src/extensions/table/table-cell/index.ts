@@ -1,10 +1,10 @@
 import {
   TableCell as TTableCell,
   TableCellOptions as TTableCellOptions,
-} from '@tiptap/extension-table-cell';
-import { Plugin, PluginKey } from '@tiptap/pm/state';
-import { Decoration, DecorationSet } from '@tiptap/pm/view';
-import { addColumn, addRow, selectedRect } from '@tiptap/pm/tables';
+} from "@tiptap/extension-table-cell";
+import { Plugin, PluginKey } from "@tiptap/pm/state";
+import { Decoration, DecorationSet } from "@tiptap/pm/view";
+import { addColumn, addRow, selectedRect } from "@tiptap/pm/tables";
 import {
   getCellsInColumn,
   getCellsInRow,
@@ -14,8 +14,8 @@ import {
   selectColumn,
   selectRow,
   selectTable,
-} from '../utilities';
-import { mergeAttributes } from '@tiptap/core';
+} from "../utilities";
+import { mergeAttributes } from "@tiptap/core";
 
 export type TableCellOptions = TTableCellOptions;
 
@@ -23,14 +23,14 @@ export const tableCellHeight = 38;
 
 export const TableCell = TTableCell.extend<TTableCellOptions>({
   content:
-    '(paragraph | heading | blockquote | list | codeBlock | image | horizontalRule)+',
+    "(paragraph | heading | blockquote | list | codeBlock | image | horizontalRule)+",
 
   addAttributes() {
     return {
       colspan: {
         default: 1,
         parseHTML: (element) => {
-          const colspan = element.getAttribute('colspan');
+          const colspan = element.getAttribute("colspan");
           const value = colspan ? parseInt(colspan, 10) : 1;
           return value;
         },
@@ -38,7 +38,7 @@ export const TableCell = TTableCell.extend<TTableCellOptions>({
       rowspan: {
         default: 1,
         parseHTML: (element) => {
-          const rowspan = element.getAttribute('rowspan');
+          const rowspan = element.getAttribute("rowspan");
           const value = rowspan ? parseInt(rowspan, 10) : 1;
           return value;
         },
@@ -46,9 +46,9 @@ export const TableCell = TTableCell.extend<TTableCellOptions>({
       colwidth: {
         default: [100],
         parseHTML: (element) => {
-          const colwidth = element.getAttribute('colwidth');
+          const colwidth = element.getAttribute("colwidth");
           const value = colwidth
-            ? colwidth.split(',').map((item) => parseInt(item, 10))
+            ? colwidth.split(",").map((item) => parseInt(item, 10))
             : null;
           return value;
         },
@@ -57,13 +57,13 @@ export const TableCell = TTableCell.extend<TTableCellOptions>({
   },
 
   parseHTML() {
-    return [{ tag: 'td' }, { tag: 'th' }];
+    return [{ tag: "td" }, { tag: "th" }];
   },
 
   renderHTML({ HTMLAttributes }) {
     const rowspan = Math.max(parseInt(HTMLAttributes.rowspan, 10), 1);
     return [
-      'td',
+      "td",
       mergeAttributes(
         this.options.HTMLAttributes,
         HTMLAttributes,
@@ -80,7 +80,7 @@ export const TableCell = TTableCell.extend<TTableCellOptions>({
   addProseMirrorPlugins() {
     return [
       new Plugin({
-        key: new PluginKey('tableCellControl'),
+        key: new PluginKey("tableCellControl"),
         props: {
           decorations: (state) => {
             if (!this.editor.isEditable) {
@@ -104,14 +104,14 @@ export const TableCell = TTableCell.extend<TTableCellOptions>({
                 if (index === 0) {
                   decorations.push(
                     Decoration.widget(pos + 1, () => {
-                      let className = 'grip-table';
+                      let className = "grip-table";
                       const selected = isTableSelected(selection);
                       if (selected) {
-                        className += ' selected';
+                        className += " selected";
                       }
-                      const grip = document.createElement('a');
+                      const grip = document.createElement("a");
                       grip.className = className;
-                      grip.addEventListener('mousedown', (event) => {
+                      grip.addEventListener("mousedown", (event) => {
                         event.preventDefault();
                         event.stopImmediatePropagation();
                         this.editor.view.dispatch(
@@ -125,40 +125,38 @@ export const TableCell = TTableCell.extend<TTableCellOptions>({
 
                 decorations.push(
                   Decoration.widget(pos + 1, () => {
-                    let className = 'grip-row';
+                    let className = "grip-row";
                     const cellRowIndex = cellRowIndexMap[index];
                     const rowSelected = isRowSelected(cellRowIndex)(selection);
                     if (rowSelected) {
-                      className += ' selected';
+                      className += " selected";
                     }
                     if (index === 0) {
-                      className += ' first';
+                      className += " first";
                     }
                     if (index === cellsInColumn.length - 1) {
-                      className += ' last';
+                      className += " last";
                     }
-                    const grip = document.createElement('a');
+                    const grip = document.createElement("a");
                     grip.className = className;
 
-                    const bar = document.createElement('span');
-                    bar.className = 'bar';
+                    const bar = document.createElement("span");
+                    bar.className = "bar";
                     grip.appendChild(bar);
 
                     let addBefore: HTMLSpanElement | null = null;
                     if (cellRowIndex === 0) {
-                      addBefore = document.createElement('span');
-                      addBefore.className = 'add before';
-                      addBefore.textContent = '+';
+                      addBefore = document.createElement("span");
+                      addBefore.className = "add before";
                       grip.appendChild(addBefore);
                     }
 
-                    const addAfter = document.createElement('span');
-                    addAfter.className = 'add after';
-                    addAfter.textContent = '+';
+                    const addAfter = document.createElement("span");
+                    addAfter.className = "add after";
                     grip.appendChild(addAfter);
 
                     grip.addEventListener(
-                      'mousedown',
+                      "mousedown",
                       (event) => {
                         event.preventDefault();
                         event.stopImmediatePropagation();
@@ -201,39 +199,37 @@ export const TableCell = TTableCell.extend<TTableCellOptions>({
               cellsInRow.forEach(({ node, pos }, index) => {
                 decorations.push(
                   Decoration.widget(pos + 1, () => {
-                    let className = 'grip-column';
+                    let className = "grip-column";
                     const cellColumnIndex = cellColumnIndexMap[index];
                     const colSelected =
                       isColumnSelected(cellColumnIndex)(selection);
                     if (colSelected) {
-                      className += ' selected';
+                      className += " selected";
                     }
                     if (index === 0) {
-                      className += ' first';
+                      className += " first";
                     } else if (index === cellsInRow.length - 1) {
-                      className += ' last';
+                      className += " last";
                     }
-                    const grip = document.createElement('a');
+                    const grip = document.createElement("a");
                     grip.className = className;
 
-                    const bar = document.createElement('span');
-                    bar.className = 'bar';
+                    const bar = document.createElement("span");
+                    bar.className = "bar";
                     grip.appendChild(bar);
 
                     let addBefore: HTMLSpanElement | null = null;
                     if (cellColumnIndex === 0) {
-                      addBefore = document.createElement('span');
-                      addBefore.className = 'add before';
-                      addBefore.textContent = '+';
+                      addBefore = document.createElement("span");
+                      addBefore.className = "add before";
                       grip.appendChild(addBefore);
                     }
 
-                    const addAfter = document.createElement('span');
-                    addAfter.className = 'add after';
-                    addAfter.textContent = '+';
+                    const addAfter = document.createElement("span");
+                    addAfter.className = "add after";
                     grip.appendChild(addAfter);
 
-                    grip.addEventListener('mousedown', (event) => {
+                    grip.addEventListener("mousedown", (event) => {
                       event.preventDefault();
                       event.stopImmediatePropagation();
                       if (event.target === addAfter) {

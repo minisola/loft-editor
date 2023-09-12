@@ -495,32 +495,49 @@
 
 .loft-editor-view .ProseMirror :where(table):not(:where([class~="not-prose"] *)) {
   width: 100%;
-  table-layout: auto;
   text-align: left;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  font-size: 0.875em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   line-height: 1.7142857;
   border-collapse: collapse;
   border: 1px solid var(--gray-4);
+  border-spacing: 0;
+  table-layout: fixed;
+  border-radius: 4px;
+  overflow: auto;
+  box-sizing: border-box;
 }
 
 .loft-editor-view .ProseMirror :where(thead th):not(:where([class~="not-prose"] *)) {
   color: var(--prose-headings);
+  background-color: var(--gray-6);
   font-weight: 600;
-  vertical-align: bottom;
-  padding-right: 0.5714286em;
-  padding-bottom: 0.5714286em;
-  padding-left: 0.5714286em;
+  padding: 7px 8px;
+  min-width: 1em;
+  position: relative;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
-.loft-editor-view .ProseMirror :where(tbody td):not(:where([class~="not-prose"] *)) {
-  vertical-align: baseline;
-  border: 1px solid var(--gray-4);
+.loft-editor-view .ProseMirror :where(td):not(:where([class~="not-prose"] *)) {
+  min-width: 1em;
+  border: 1px solid var(--gray-6);
+  padding: 7px 8px;
+  min-width: 1em;
+  position: relative;
+  word-wrap: break-word;
+  word-break: break-all;
+  vertical-align: top;
 }
 
-.loft-editor-view .ProseMirror :where(tbody th):not(:where([class~="not-prose"] *)) {
-  border: 1px solid var(--gray-4);
+.loft-editor-view .ProseMirror :where(th):not(:where([class~="not-prose"] *)) {
+  background-color: var(--gray-6);
+  padding: 7px 8px;
+  min-width: 1em;
+  position: relative;
+  word-wrap: break-word;
+  word-break: break-all;
+  vertical-align: top;
 }
 
 .loft-editor-view .ProseMirror :where(tfoot td):not(:where([class~="not-prose"] *)) {
@@ -607,9 +624,6 @@
   padding-left: 0.5714286em;
 }
 
-.loft-editor-view .ProseMirror :where(tbody td:first-child, tfoot td:first-child):not( :where([class~="not-prose"] *)) {
-  padding-left: 0;
-}
 
 .loft-editor-view .ProseMirror :where(tbody td:last-child, tfoot td:last-child):not( :where([class~="not-prose"] *)) {
   padding-right: 0;
