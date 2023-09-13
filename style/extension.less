@@ -50,3 +50,62 @@
   top: -32px;
   right: 0;
 }
+
+
+//font Color extension
+.loft-editor-color-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.loft-editor-color-selector-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 260px;
+  gap: 6px;
+
+  i {
+    font-style: normal;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid var(--le-gray-8);
+
+    &.background-item {
+      border-color: transparent;
+      position: relative;
+      overflow: hidden;
+
+      &:first-child {
+        border: 1px solid var(--le-gray-6);
+
+        &:hover {
+          border: 1px solid var(--theme-secondary-color);
+        }
+      }
+
+      &:first-child:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        width: 1px;
+        height: 100%;
+        background: var(--le-gray-6);
+        transform: rotate(45deg) scale(1.4);
+      }
+    }
+
+    &:hover {
+      border: 1px solid var(--theme-secondary-color);
+    }
+
+    &.item-active {
+      border: 1px solid var(--theme-color);
+      box-shadow: 0 0 0 1px var(--theme-color);
+    }
+  }
+}

@@ -26,6 +26,7 @@ const BubbleItem: React.FC<IBubbleItemProps> = ({ comps, props }) => {
         content={<div>{boxContent}</div>}
         placement="bottom"
         open={open}
+        // open={true}
         onOpenChange={setOpen}
         destroyTooltipOnHide={true}
         getPopupContainer={() => containerRef.current || document.body}

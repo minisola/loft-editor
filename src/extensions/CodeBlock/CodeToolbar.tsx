@@ -5,7 +5,6 @@ import { LuChevronDown, LuCopy } from "react-icons/lu";
 import { copyText } from "./utils";
 
 export function CodeToolbar({ node, updateAttributes, extension }: any) {
-  console.log("node: ", node);
   const {
     attrs: { language: defaultLanguage },
   } = node;

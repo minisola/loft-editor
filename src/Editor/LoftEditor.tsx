@@ -95,7 +95,6 @@ export class LoftEditor {
     if (newOptions.markdown && tiptapOptions.content) {
       tiptapOptions.content = "";
     }
-    console.log('tiptapOptions: ', tiptapOptions);
     this.$editor = new TiptapEditor(tiptapOptions) as TiptapReactEditor;
 
     // markdown rewrite

@@ -1,16 +1,12 @@
 import React, { useRef, useState } from "react";
-import { Editor } from "@tiptap/core";
 import { TableGrid } from "../components/TableGrid";
-import { LocaleStore } from "../../..";
+import { BubbleBtnExtensionProps, LocaleStore } from "../../..";
 import { LocaleValuesType } from "../../../view/locale/lang/zh_CN";
-import { Button, Divider, Popover } from "antd";
+import { Divider, Popover } from "antd";
 import { LuTable } from "react-icons/lu";
+import { IconButton } from "../../../view/Button";
 
-export type InsertTableButtonProps = {
-  editor: Editor;
-};
-
-export const InsertTableButton: React.FC<InsertTableButtonProps> = ({
+export const InsertTableButton: React.FC<BubbleBtnExtensionProps> = ({
   editor,
 }) => {
   const isTableActive = editor.isActive("table");
@@ -42,7 +38,7 @@ export const InsertTableButton: React.FC<InsertTableButtonProps> = ({
         content={
           <div className="insert-table-popover">
             <div className="insert-table-popover-header">
-              <span>{locale.toolPane.title}</span>
+              <div>{locale.toolPane.title}</div>
               <span className="insert-table-popover-size">
                 {size.rows > 0 &&
                   size.columns > 0 &&
@@ -77,12 +73,7 @@ export const InsertTableButton: React.FC<InsertTableButtonProps> = ({
           </div>
         }
       >
-        <Button
-          disabled={isTableActive}
-          type={"text"}
-          className="loft-editor-icon-adapt"
-          icon={<LuTable />}
-        ></Button>
+        <IconButton disabled={isTableActive} icon={<LuTable />}></IconButton>
       </Popover>
     </div>
   );

@@ -1,17 +1,18 @@
 import { Button, Divider, Space } from "antd";
 import { BubbleMenuProps } from "@tiptap/react";
-import {
-  FontBoldIcon,
-  FontItalicIcon,
-  StrikethroughIcon,
-} from "@radix-ui/react-icons";
+import { FontItalicIcon, StrikethroughIcon } from "@radix-ui/react-icons";
 import { Editor, isTextSelection } from "@tiptap/core";
 import BubbleItem from "./BubbleItem";
 import { linkComps } from "./menus/link";
-import { colorComps } from "./menus/color";
 import { InsertTableButton } from "../Table";
-import { LuTable, LuCode } from "react-icons/lu";
+import { LuCode, LuTag } from "react-icons/lu";
+import { BsTypeBold } from "react-icons/bs";
 import { CommonBubbleMenu } from "./common/CommonBubbleMenu";
+import { FontColor } from "./menus/FontColor";
+
+export type BubbleBtnExtensionProps = {
+  editor: Editor;
+};
 
 type EditorBubbleMenuProps = Omit<BubbleMenuProps, "children">;
 
@@ -67,19 +68,29 @@ export function InlineTools(props: { editor: Editor }) {
     //   command: () => {
     //     props.editor.chain().focus().toggleMarker({ class: "test-mark" }).run();
     //   },
-    //   icon: <span style={{ fontWeight: 500 }}>TAG</span>,
+    //   icon: (
+    //     <span>
+    //       <LuTag />
+    //     </span>
+    //   ),
     // },
     {
       name: "bold",
       isActive: () => props.editor.isActive("bold"),
       command: () => props.editor.chain().focus().toggleBold().run(),
-      icon: <FontBoldIcon style={{ width: 14, height: 14 }} />,
+      icon: (
+        <BsTypeBold
+          style={{
+            fontSize: 16,
+          }}
+        />
+      ),
     },
     {
       name: "italic",
       isActive: () => props.editor.isActive("italic"),
       command: () => props.editor.chain().focus().toggleItalic().run(),
-      icon: <FontItalicIcon style={{ width: 14, height: 14 }} />,
+      icon: <FontItalicIcon />,
     },
     {
       name: "strike",
@@ -91,7 +102,7 @@ export function InlineTools(props: { editor: Editor }) {
       name: "code",
       isActive: () => props.editor.isActive("code"),
       command: () => props.editor.chain().focus().toggleCode().run(),
-      icon: <LuCode style={{ width: 14, height: 14 }} />,
+      icon: <LuCode />,
     },
   ];
 
@@ -110,7 +121,7 @@ export function InlineTools(props: { editor: Editor }) {
       })}
       <Divider type="vertical" />
       <BubbleItem comps={linkComps} props={props} />
-      <BubbleItem comps={colorComps} props={props} />
+      <FontColor editor={props.editor} />
       <InsertTableButton editor={props.editor} />
     </Space>
   );
