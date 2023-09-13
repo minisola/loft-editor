@@ -111,13 +111,7 @@ export function InlineTools(props: { editor: Editor }) {
       <Divider type="vertical" />
       <BubbleItem comps={linkComps} props={props} />
       <BubbleItem comps={colorComps} props={props} />
-      <InsertTableButton editor={props.editor}>
-        <Button
-          type={"text"}
-          className="loft-editor-icon-adapt"
-          icon={<LuTable />}
-        ></Button>
-      </InsertTableButton>
+      <InsertTableButton editor={props.editor} />
     </Space>
   );
 }

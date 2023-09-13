@@ -18,16 +18,22 @@
   }
 }
 
+.loft-editor-view.inline-style {
+  padding-top: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
+
 .loft-editor-view .ProseMirror {
-  --prose-body: #374151;
-  --prose-headings: #111827;
+  --prose-text: #1f2329;
+  --prose-captain: var(--le-gray-11);
   --prose-lead: #4b5563;
-  --prose-links: #111827;
+  --prose-links: @primary-color;
   --prose-bold: #111827;
   --prose-counters: #6b7280;
   --prose-bullets: #d1d5db;
   --prose-hr: #e5e7eb;
-  --prose-quotes: #111827;
+  --prose-quotes: var(--prose-captain);
   --prose-quote-borders: #e5e7eb;
   --prose-captions: #6b7280;
   --prose-code: #111827;
@@ -57,8 +63,7 @@
 
 
 .loft-editor-view .ProseMirror {
-  color: var(--prose-body);
-  max-width: 65ch;
+  color: var(--prose-text);
 }
 
 .loft-editor-view .ProseMirror {
@@ -87,24 +92,24 @@
   margin-bottom: 0;
 }
 
-:is(.dark .loft-editor-view .ProseMirror) {
-  --prose-body: var(--prose-invert-body);
-  --prose-headings: var(--prose-invert-headings);
-  --prose-lead: var(--prose-invert-lead);
-  --prose-links: var(--prose-invert-links);
-  --prose-bold: var(--prose-invert-bold);
-  --prose-counters: var(--prose-invert-counters);
-  --prose-bullets: var(--prose-invert-bullets);
-  --prose-hr: var(--prose-invert-hr);
-  --prose-quotes: var(--prose-invert-quotes);
-  --prose-quote-borders: var(--prose-invert-quote-borders);
-  --prose-captions: var(--prose-invert-captions);
-  --prose-code: var(--prose-invert-code);
-  --prose-pre-code: var(--prose-invert-pre-code);
-  --prose-pre-bg: var(--prose-invert-pre-bg);
-  --prose-th-borders: var(--prose-invert-th-borders);
-  --prose-td-borders: var(--prose-invert-td-borders);
-}
+// :is(.dark .loft-editor-view .ProseMirror) {
+//   --prose-body: var(--prose-invert-body);
+//   --prose-text: var(--prose-invert-headings);
+//   --prose-lead: var(--prose-invert-lead);
+//   --prose-links: var(--prose-invert-links);
+//   --prose-bold: var(--prose-invert-bold);
+//   --prose-counters: var(--prose-invert-counters);
+//   --prose-bullets: var(--prose-invert-bullets);
+//   --prose-hr: var(--prose-invert-hr);
+//   --prose-quotes: var(--prose-invert-quotes);
+//   --prose-quote-borders: var(--prose-invert-quote-borders);
+//   --prose-captions: var(--prose-invert-captions);
+//   --prose-code: var(--prose-invert-code);
+//   --prose-pre-code: var(--prose-invert-pre-code);
+//   --prose-pre-bg: var(--prose-invert-pre-bg);
+//   --prose-th-borders: var(--prose-invert-th-borders);
+//   --prose-td-borders: var(--prose-invert-td-borders);
+// }
 
 .loft-editor-view .ProseMirror:first-child {
   margin-top: 20px;
@@ -145,8 +150,8 @@
   height: 1.2em;
   position: relative;
   top: 5px;
-  background-color: var(--mp-gray-1);
-  border: 2px solid var(--mp-gray-12);
+  background-color: var(--le-gray-1);
+  border: 2px solid var(--le-gray-12);
   margin-right: 0.3em;
   display: flex;
   justify-content: center;
@@ -170,7 +175,7 @@
 
 .ProseMirror ul.contains-task-list .task-list-item[data-checked]>div {
   display: inline-block;
-  color: var(--mp-gray-11);
+  color: var(--le-gray-11);
   text-decoration: line-through;
   text-decoration-thickness: 2px;
 }
@@ -183,7 +188,7 @@
 .loft-editor-view .ProseMirror .is-editor-empty:first-child::before {
   content: attr(data-placeholder);
   float: left;
-  color: var(--mp-gray-8);
+  color: var(--le-gray-8);
   pointer-events: none;
   height: 0;
 }
@@ -197,7 +202,7 @@
 .loft-editor-view .ProseMirror .is-empty::before {
   content: attr(data-placeholder);
   float: left;
-  color: var(--mp-gray-8);
+  color: var(--le-gray-8);
   pointer-events: none;
   height: 0;
 }
@@ -309,26 +314,16 @@
 
 .loft-editor-view .ProseMirror blockquote {
   font-weight: 400;
-  font-style: italic;
   color: var(--prose-quotes);
-  border-left-width: 0.25em;
-  border-left-color: var(--prose-quote-borders);
+  border-left: 0.25em solid var(--prose-quote-borders);
   quotes: "\201C""\201D""\2018""\2019";
   margin-top: 1.6em;
   margin-bottom: 1.6em;
   padding-left: 1em;
 }
 
-.loft-editor-view .ProseMirror :blockquote p:first-of-type::before {
-  content: open-quote;
-}
-
-.loft-editor-view .ProseMirror blockquote p:last-of-type::after {
-  content: close-quote;
-}
-
 .loft-editor-view .ProseMirror h1 {
-  color: var(--prose-headings);
+  color: var(--prose-text);
   font-weight: 800;
   font-size: 2.25em;
   margin-top: 0;
@@ -342,7 +337,7 @@
 }
 
 .loft-editor-view .ProseMirror h2 {
-  color: var(--prose-headings);
+  color: var(--prose-text);
   font-weight: 700;
   font-size: 1.5em;
   margin-top: 2em;
@@ -356,7 +351,7 @@
 }
 
 .loft-editor-view .ProseMirror h3 {
-  color: var(--prose-headings);
+  color: var(--prose-text);
   font-weight: 600;
   font-size: 1.25em;
   margin-top: 1.6em;
@@ -370,7 +365,7 @@
 }
 
 .loft-editor-view .ProseMirror h4 {
-  color: var(--prose-headings);
+  color: var(--prose-text);
   font-weight: 600;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
@@ -493,7 +488,7 @@
 }
 
 .loft-editor-view .ProseMirror thead th {
-  color: var(--prose-headings);
+  color: var(--prose-text);
   background-color: var(--gray-6);
   font-weight: 600;
   padding: 7px 8px;

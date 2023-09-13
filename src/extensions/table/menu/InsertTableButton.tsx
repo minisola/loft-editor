@@ -3,17 +3,17 @@ import { Editor } from "@tiptap/core";
 import { TableGrid } from "../components/TableGrid";
 import { LocaleStore } from "../../..";
 import { LocaleValuesType } from "../../../view/locale/lang/zh_CN";
-import { Divider, Popover } from "antd";
+import { Button, Divider, Popover } from "antd";
+import { LuTable } from "react-icons/lu";
 
 export type InsertTableButtonProps = {
   editor: Editor;
-  children: React.ReactElement;
 };
 
 export const InsertTableButton: React.FC<InsertTableButtonProps> = ({
   editor,
-  children,
 }) => {
+  const isTableActive = editor.isActive("table");
   const locale = LocaleStore.get(editor, "table") as LocaleValuesType["table"];
   const containerRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState<{ rows: number; columns: number }>({
@@ -34,7 +34,7 @@ export const InsertTableButton: React.FC<InsertTableButtonProps> = ({
       <Popover
         arrow={false}
         placement="bottom"
-        open={open}
+        open={isTableActive ? false : open}
         onOpenChange={setOpen}
         destroyTooltipOnHide={true}
         getPopupContainer={() => containerRef.current || document.body}
@@ -77,7 +77,12 @@ export const InsertTableButton: React.FC<InsertTableButtonProps> = ({
           </div>
         }
       >
-        {children}
+        <Button
+          disabled={isTableActive}
+          type={"text"}
+          className="loft-editor-icon-adapt"
+          icon={<LuTable />}
+        ></Button>
       </Popover>
     </div>
   );

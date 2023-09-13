@@ -1,50 +1,14 @@
 :root {
-  /* @radix-ui/colors violet */
-  --mp-1: hsl(255, 65%, 99.4%);
-  --mp-2: hsl(252, 100%, 99%);
-  --mp-3: hsl(252, 96.9%, 97.4%);
-  --mp-4: hsl(252, 91.5%, 95.5%);
-  --mp-5: hsl(252, 85.1%, 93%);
-  --mp-6: hsl(252, 77.8%, 89.4%);
-  --mp-7: hsl(252, 71%, 83.7%);
-  --mp-8: hsl(252, 68.6%, 76.3%);
-  --mp-9: hsl(252, 56%, 57.5%);
-  --mp-10: hsl(251, 48.1%, 53.5%);
-  --mp-11: hsl(250, 43%, 48%);
-  --mp-12: hsl(254, 60%, 18.5%);
-
-  --mp-gray-1: hsl(0, 0%, 99%);
-  --mp-gray-2: hsl(0, 0%, 97.3%);
-  --mp-gray-3: hsl(0, 0%, 95.1%);
-  --mp-gray-4: hsl(0, 0%, 93%);
-  --mp-gray-5: hsl(0, 0%, 90.9%);
-  --mp-gray-6: hsl(0, 0%, 88.7%);
-  --mp-gray-7: hsl(0, 0%, 85.8%);
-  --mp-gray-8: hsl(0, 0%, 78%);
-  --mp-gray-9: hsl(0, 0%, 56.1%);
-  --mp-gray-10: hsl(0, 0%, 52.3%);
-  --mp-gray-11: hsl(0, 0%, 43.5%);
-  --mp-gray-12: hsl(0, 0%, 9%);
-
-  --mp: var(--mp-9);
-
-  --mp-foreground: var(--mp-9);
-  --mp-background: var(--mp-1);
-}
-
-.loft-editor-view.inline-style {
-  padding-top: 0;
-  box-shadow: none;
-  background-color: transparent;
-}
-
-.loft-editor-view .lucide {
-  height: 14px;
-  width: 14px;
-  margin-top: 1px;
-}
-
-.loft-editor-slash-menu .ant-dropdown-menu-item-icon {
-  height: 14px;
-  width: 14px;
+  --le-gray-1: hsl(0, 0%, 99%);
+  --le-gray-2: hsl(0, 0%, 97.3%);
+  --le-gray-3: hsl(0, 0%, 95.1%);
+  --le-gray-4: hsl(0, 0%, 93%);
+  --le-gray-5: hsl(0, 0%, 90.9%);
+  --le-gray-6: hsl(0, 0%, 88.7%);
+  --le-gray-7: hsl(0, 0%, 85.8%);
+  --le-gray-8: hsl(0, 0%, 78%);
+  --le-gray-9: hsl(0, 0%, 56.1%);
+  --le-gray-10: hsl(0, 0%, 52.3%);
+  --le-gray-11: hsl(0, 0%, 43.5%);
+  --le-gray-12: hsl(0, 0%, 9%);
 }
