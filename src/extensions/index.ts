@@ -106,7 +106,7 @@ export const defaultTiptapExtensions = [
   Typography,
   TaskList.configure({
     HTMLAttributes: {
-      class: "not-prose contains-task-list",
+      class: "contains-task-list",
     },
   }),
   TaskItem.configure({

@@ -19,11 +19,6 @@
 }
 
 .loft-editor-view .ProseMirror {
-  color: var(--prose-body);
-  max-width: 65ch;
-}
-
-.loft-editor-view .ProseMirror {
   --prose-body: #374151;
   --prose-headings: #111827;
   --prose-lead: #4b5563;
@@ -56,18 +51,23 @@
   --prose-invert-pre-bg: rgb(0 0 0 / 50%);
   --prose-invert-th-borders: #4b5563;
   --prose-invert-td-borders: #374151;
+  font-size: 1em;
+  line-height: 1.6;
+}
 
-  font-size: 1rem;
-  line-height: 1.75;
+
+.loft-editor-view .ProseMirror {
+  color: var(--prose-body);
+  max-width: 65ch;
 }
 
 .loft-editor-view .ProseMirror {
   position: relative;
   max-width: none;
   white-space: pre-wrap;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-bottom: 3rem;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-bottom: 3em;
   outline: none;
 }
 
@@ -78,8 +78,8 @@
 }
 
 .loft-editor-view .ProseMirror>p {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
 }
 
 .loft-editor-view.inline-style .ProseMirror>p {
@@ -121,19 +121,19 @@
 .ProseMirror .task-list-item {
   display: flex;
   align-items: flex-start;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
   padding-left: 0;
 }
 
 .ProseMirror ul.contains-task-list .task-list-item>label {
-  margin-right: 0.2rem;
+  margin-right: 0.2em;
   user-select: none;
 }
 
 @media screen and (max-width: 768px) {
   .ProseMirror ul.contains-task-list .task-list-item>label {
-    margin-right: 0.5rem;
+    margin-right: 0.5em;
   }
 }
 
@@ -147,7 +147,7 @@
   top: 5px;
   background-color: var(--mp-gray-1);
   border: 2px solid var(--mp-gray-12);
-  margin-right: 0.3rem;
+  margin-right: 0.3em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,21 +212,21 @@
   right: 0;
 }
 
-.loft-editor-view .ProseMirror :where(p):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror p {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
   margin: 0;
 }
 
-.loft-editor-view .ProseMirror :where(p):not(:where([class~="not-prose"] *)):first-of-type::before {
+.loft-editor-view .ProseMirror p:first-of-type::before {
   content: none;
 }
 
-.loft-editor-view .ProseMirror :where(p):not(:where([class~="not-prose"] *)):last-of-type::after {
+.loft-editor-view .ProseMirror p:last-of-type::after {
   content: none;
 }
 
-.loft-editor-view .ProseMirror :where([class~="lead"]):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror [class~="lead"] {
   color: var(--prose-lead);
   font-size: 1.25em;
   line-height: 1.6;
@@ -234,100 +234,84 @@
   margin-bottom: 1.2em;
 }
 
-.loft-editor-view .ProseMirror :where(a):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror a {
   color: var(--prose-links);
   text-decoration: underline;
   font-weight: 500;
 }
 
-.loft-editor-view .ProseMirror :where(strong):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror strong {
   color: var(--prose-bold);
   font-weight: 600;
 }
 
-.loft-editor-view .ProseMirror :where(a strong):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror a strong {
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(blockquote strong):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror blockquote strong {
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(thead th strong):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror thead th strong {
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(ol):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror ol {
   list-style-type: decimal;
   margin-top: 1.25em;
   margin-bottom: 1.25em;
   padding-left: 1.625em;
 }
 
-.loft-editor-view .ProseMirror :where(ol[type="A"]):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror ol[type="A"] {
   list-style-type: upper-alpha;
 }
 
-.loft-editor-view .ProseMirror :where(ol[type="a"]):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror ol[type="a"] {
   list-style-type: lower-alpha;
 }
 
-.loft-editor-view .ProseMirror :where(ol[type="A"s]):not(:where([class~="not-prose"] *)) {
-  list-style-type: upper-alpha;
-}
-
-.loft-editor-view .ProseMirror :where(ol[type="a"s]):not(:where([class~="not-prose"] *)) {
-  list-style-type: lower-alpha;
-}
-
-.loft-editor-view .ProseMirror :where(ol[type="I"]):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror ol[type="I"] {
   list-style-type: upper-roman;
 }
 
-.loft-editor-view .ProseMirror :where(ol[type="i"]):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror ol[type="i"] {
   list-style-type: lower-roman;
 }
 
-.loft-editor-view .ProseMirror :where(ol[type="I"s]):not(:where([class~="not-prose"] *)) {
-  list-style-type: upper-roman;
-}
-
-.loft-editor-view .ProseMirror :where(ol[type="i"s]):not(:where([class~="not-prose"] *)) {
-  list-style-type: lower-roman;
-}
-
-.loft-editor-view .ProseMirror :where(ol[type="1"]):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror ol[type="1"] {
   list-style-type: decimal;
 }
 
-.loft-editor-view .ProseMirror :where(ul):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror ul {
   list-style-type: disc;
   margin-top: 1.25em;
   margin-bottom: 1.25em;
   padding-left: 1.625em;
 }
 
-.loft-editor-view .ProseMirror :where(ol > li):not(:where([class~="not-prose"] *))::marker {
+.loft-editor-view .ProseMirror ol>li::marker {
   font-weight: 400;
   color: var(--prose-counters);
 }
 
-.loft-editor-view .ProseMirror :where(ul > li):not(:where([class~="not-prose"] *))::marker {
+.loft-editor-view .ProseMirror ul>li::marker {
   color: var(--prose-bullets);
 }
 
-.loft-editor-view .ProseMirror :where(hr):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror hr {
   border-color: var(--prose-hr);
   border-top-width: 1px;
   margin-top: 3em;
   margin-bottom: 3em;
 }
 
-.loft-editor-view .ProseMirror :where(blockquote):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror blockquote {
   font-weight: 400;
   font-style: italic;
   color: var(--prose-quotes);
-  border-left-width: 0.25rem;
+  border-left-width: 0.25em;
   border-left-color: var(--prose-quote-borders);
   quotes: "\201C""\201D""\2018""\2019";
   margin-top: 1.6em;
@@ -335,15 +319,15 @@
   padding-left: 1em;
 }
 
-.loft-editor-view .ProseMirror :where(blockquote p:first-of-type):not( :where([class~="not-prose"] *))::before {
+.loft-editor-view .ProseMirror :blockquote p:first-of-type::before {
   content: open-quote;
 }
 
-.loft-editor-view .ProseMirror :where(blockquote p:last-of-type):not(:where([class~="not-prose"] *))::after {
+.loft-editor-view .ProseMirror blockquote p:last-of-type::after {
   content: close-quote;
 }
 
-.loft-editor-view .ProseMirror :where(h1):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h1 {
   color: var(--prose-headings);
   font-weight: 800;
   font-size: 2.25em;
@@ -352,12 +336,12 @@
   line-height: 1.1111111;
 }
 
-.loft-editor-view .ProseMirror :where(h1 strong):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h1 strong {
   font-weight: 900;
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(h2):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h2 {
   color: var(--prose-headings);
   font-weight: 700;
   font-size: 1.5em;
@@ -366,12 +350,12 @@
   line-height: 1.3333333;
 }
 
-.loft-editor-view .ProseMirror :where(h2 strong):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h2 strong {
   font-weight: 800;
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(h3):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h3 {
   color: var(--prose-headings);
   font-weight: 600;
   font-size: 1.25em;
@@ -380,12 +364,12 @@
   line-height: 1.6;
 }
 
-.loft-editor-view .ProseMirror :where(h3 strong):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h3 strong {
   font-weight: 700;
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(h4):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h4 {
   color: var(--prose-headings);
   font-weight: 600;
   margin-top: 1.5em;
@@ -393,29 +377,29 @@
   line-height: 1.5;
 }
 
-.loft-editor-view .ProseMirror :where(h4 strong):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h4 strong {
   font-weight: 700;
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(img):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror img {
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
-.loft-editor-view .ProseMirror :where(figure > *):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror figure>* {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.loft-editor-view .ProseMirror :where(figcaption):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror figcaption {
   color: var(--prose-captions);
   font-size: 0.875em;
   line-height: 1.4285714;
   margin-top: 0.8571429em;
 }
 
-.loft-editor-view .ProseMirror :where(code):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror code {
   padding: 2px 4px;
   background-color: #f5f6f7;
   background-color: var(--gray-4, #f5f6f7);
@@ -427,37 +411,37 @@
 }
 
 
-.loft-editor-view .ProseMirror :where(a code):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror a code {
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(h1 code):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h1 code {
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(h2 code):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h2 code {
   color: inherit;
   font-size: 0.875em;
 }
 
-.loft-editor-view .ProseMirror :where(h3 code):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h3 code {
   color: inherit;
   font-size: 0.9em;
 }
 
-.loft-editor-view .ProseMirror :where(h4 code):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h4 code {
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(blockquote code):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror blockquote code {
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(thead th code):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror thead th code {
   color: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(pre):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror pre {
   color: var(--prose-pre-code);
   background-color: var(--prose-pre-bg);
   overflow-x: auto;
@@ -466,14 +450,14 @@
   line-height: 1.7142857;
   margin-top: 1.7142857em;
   margin-bottom: 1.7142857em;
-  border-radius: 0.375rem;
+  border-radius: 0.375em;
   padding-top: 0.8571429em;
   padding-right: 1.1428571em;
   padding-bottom: 0.8571429em;
   padding-left: 1.1428571em;
 }
 
-.loft-editor-view .ProseMirror :where(pre code):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror pre code {
   background-color: transparent;
   border-width: 0;
   border-radius: 0;
@@ -485,19 +469,19 @@
   line-height: inherit;
 }
 
-.loft-editor-view .ProseMirror :where(pre code):not(:where([class~="not-prose"] *))::before {
+.loft-editor-view .ProseMirror pre code::before {
   content: none;
 }
 
-.loft-editor-view .ProseMirror :where(pre code):not(:where([class~="not-prose"] *))::after {
+.loft-editor-view .ProseMirror pre code::after {
   content: none;
 }
 
-.loft-editor-view .ProseMirror :where(table):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror table {
   width: 100%;
   text-align: left;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
   line-height: 1.7142857;
   border-collapse: collapse;
   border: 1px solid var(--gray-4);
@@ -508,7 +492,7 @@
   box-sizing: border-box;
 }
 
-.loft-editor-view .ProseMirror :where(thead th):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror thead th {
   color: var(--prose-headings);
   background-color: var(--gray-6);
   font-weight: 600;
@@ -519,7 +503,7 @@
   word-break: break-all;
 }
 
-.loft-editor-view .ProseMirror :where(td):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror td {
   min-width: 1em;
   border: 1px solid var(--gray-6);
   padding: 7px 8px;
@@ -530,7 +514,7 @@
   vertical-align: top;
 }
 
-.loft-editor-view .ProseMirror :where(th):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror th {
   background-color: var(--gray-6);
   padding: 7px 8px;
   min-width: 1em;
@@ -540,84 +524,88 @@
   vertical-align: top;
 }
 
-.loft-editor-view .ProseMirror :where(tfoot td):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror tfoot td {
   vertical-align: top;
 }
 
-.loft-editor-view .ProseMirror :where(video):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror video {
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
-.loft-editor-view .ProseMirror :where(figure):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror figure {
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
-.loft-editor-view .ProseMirror :where(li):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror li {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
-.loft-editor-view .ProseMirror :where(ol > li):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror ol>li {
   padding-left: 0.375em;
 }
 
-.loft-editor-view .ProseMirror :where(ul > li):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror ul>li {
   padding-left: 0.375em;
 }
 
-.loft-editor-view .ProseMirror :where(.prose > ul > li p):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror .prose>ul>li p {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
 
-.loft-editor-view .ProseMirror :where(.prose > ul > li > *:first-child):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror .prose>ul>li>*:first-child {
   margin-top: 1.25em;
 }
 
-.loft-editor-view .ProseMirror :where(.prose > ul > li > *:last-child):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror .prose>ul>li>*:last-child {
   margin-bottom: 1.25em;
 }
 
-.loft-editor-view .ProseMirror :where(.prose > ol > li > *:first-child):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror .prose>ol>li>*:first-child {
   margin-top: 1.25em;
 }
 
-.loft-editor-view .ProseMirror :where(.prose > ol > li > *:last-child):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror .prose>ol>li>*:last-child {
   margin-bottom: 1.25em;
 }
 
-.loft-editor-view .ProseMirror :where(ul ul, ul ol, ol ul, ol ol):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror ul ul,
+ul ol,
+ol ul,
+ol ol {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
 
-.loft-editor-view .ProseMirror :where(hr + *):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror hr+* {
   margin-top: 0;
 }
 
-.loft-editor-view .ProseMirror :where(h2 + *):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h2+* {
   margin-top: 0;
 }
 
-.loft-editor-view .ProseMirror :where(h3 + *):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h3+* {
   margin-top: 0;
 }
 
-.loft-editor-view .ProseMirror :where(h4 + *):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror h4+* {
   margin-top: 0;
 }
 
-.loft-editor-view .ProseMirror :where(thead th:first-child):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror thead th:first-child {
   padding-left: 0;
 }
 
-.loft-editor-view .ProseMirror :where(thead th:last-child):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror thead th:last-child {
   padding-right: 0;
 }
 
-.loft-editor-view .ProseMirror :where(tbody td, tfoot td):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror tbody td,
+tfoot td {
   padding-top: 0.5714286em;
   padding-right: 0.5714286em;
   padding-bottom: 0.5714286em;
@@ -625,15 +613,17 @@
 }
 
 
-.loft-editor-view .ProseMirror :where(tbody td:last-child, tfoot td:last-child):not( :where([class~="not-prose"] *)) {
+
+.loft-editor-view .ProseMirror tbody td:last-child,
+.loft-editor-view .ProseMirror tfoot td:last-child {
   padding-right: 0;
 }
 
-.loft-editor-view .ProseMirror :where(.prose > :first-child):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror .prose> :first-child {
   margin-top: 0;
 }
 
-.loft-editor-view .ProseMirror :where(.prose > :last-child):not(:where([class~="not-prose"] *)) {
+.loft-editor-view .ProseMirror .prose> :last-child {
   margin-bottom: 0;
 }
 

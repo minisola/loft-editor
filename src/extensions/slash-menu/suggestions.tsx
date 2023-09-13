@@ -1,25 +1,17 @@
 import { Range, Editor } from "@tiptap/react";
 import {
-  BorderTopIcon,
-  BorderBottomIcon,
-  BorderLeftIcon,
-  DividerVerticalIcon,
-  DividerHorizontalIcon,
-  BorderRightIcon,
-} from "@radix-ui/react-icons";
-import {
-  Heading1,
-  Heading2,
-  Heading3,
-  ListIcon,
-  ListChecksIcon,
-  ListOrderedIcon,
-  TextIcon,
-  Code2Icon,
-  QuoteIcon,
-  ImageIcon,
-  TableIcon,
-} from "lucide-react";
+  LuHeading1,
+  LuHeading2,
+  LuHeading3,
+  LuList,
+  LuListChecks,
+  LuListOrdered,
+  LuText,
+  LuCode2,
+  LuQuote,
+  LuImage,
+  LuTable,
+} from "react-icons/lu";
 import { LocaleStore, UploadImageHandler } from "../../cacheStore";
 import { EditorModifier } from "../../modifier";
 import { SuggestionOptions } from "@tiptap/suggestion";
@@ -43,11 +35,11 @@ type SuggestionLocale = LocaleValuesType["slashSuggestion"];
 export const getSuggestionItems: GetSuggestionItems = ({ query, editor }) => {
   const locale = LocaleStore.get(editor, "slashSuggestion") as SuggestionLocale;
   const isTableActive = editor.isActive("table");
-  const suggestions = isTableActive
-    ? getTableSuggestions(locale)
-    : getDefaultSuggestions(locale);
-
+  const suggestions = getDefaultSuggestions(locale);
   return suggestions.filter((item) => {
+    if (isTableActive && item.searchTerms.includes("table")) {
+      return false;
+    }
     if (typeof query === "string" && query.length > 0) {
       const search = query.toLowerCase();
       return (
@@ -65,7 +57,7 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
     {
       title: locale.text.title,
       searchTerms: ["p", "paragraph"],
-      icon: <TextIcon />,
+      icon: <LuText />,
       command: ({ editor, range }: CommandProps) => {
         editor
           .chain()
@@ -78,7 +70,7 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
     {
       title: locale.todo.title,
       searchTerms: ["todo", "task", "list", "check", "checkbox"],
-      icon: <ListChecksIcon />,
+      icon: <LuListChecks />,
       command: ({ editor, range }: CommandProps) => {
         editor.chain().focus().deleteRange(range).toggleTaskList().run();
       },
@@ -86,7 +78,7 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
     {
       title: locale.heading1.title,
       searchTerms: ["title", "big", "large"],
-      icon: <Heading1 />,
+      icon: <LuHeading1 />,
       command: ({ editor, range }: CommandProps) => {
         editor
           .chain()
@@ -99,7 +91,7 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
     {
       title: locale.heading2.title,
       searchTerms: ["subtitle", "medium"],
-      icon: <Heading2 />,
+      icon: <LuHeading2 />,
       command: ({ editor, range }: CommandProps) => {
         editor
           .chain()
@@ -112,7 +104,7 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
     {
       title: locale.heading3.title,
       searchTerms: ["subtitle", "small"],
-      icon: <Heading3 />,
+      icon: <LuHeading3 />,
       command: ({ editor, range }: CommandProps) => {
         editor
           .chain()
@@ -125,7 +117,7 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
     {
       title: locale.bulletList.title,
       searchTerms: ["unordered", "point"],
-      icon: <ListIcon />,
+      icon: <LuList />,
       command: ({ editor, range }: CommandProps) => {
         editor.chain().focus().deleteRange(range).toggleBulletList().run();
       },
@@ -133,7 +125,7 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
     {
       title: locale.numberedList.title,
       searchTerms: ["ordered"],
-      icon: <ListOrderedIcon />,
+      icon: <LuListOrdered />,
       command: ({ editor, range }: CommandProps) => {
         editor.chain().focus().deleteRange(range).toggleOrderedList().run();
       },
@@ -141,7 +133,7 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
     {
       title: locale.quote.title,
       searchTerms: ["blockquote"],
-      icon: <QuoteIcon />,
+      icon: <LuQuote />,
       command: ({ editor, range }: CommandProps) =>
         editor
           .chain()
@@ -154,14 +146,14 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
     {
       title: locale.code.title,
       searchTerms: ["codeblock"],
-      icon: <Code2Icon />,
+      icon: <LuCode2 />,
       command: ({ editor, range }: CommandProps) =>
         editor.chain().focus().deleteRange(range).toggleCodeBlock().run(),
     },
     {
       title: locale.image.title,
       searchTerms: ["photo", "picture", "media"],
-      icon: <ImageIcon />,
+      icon: <LuImage />,
       command: ({ editor, range }: CommandProps) => {
         editor.chain().focus().deleteRange(range).run();
 
@@ -191,7 +183,7 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
     {
       title: locale.table.title,
       searchTerms: ["table"],
-      icon: <TableIcon />,
+      icon: <LuTable />,
       command: ({ editor, range }: CommandProps) =>
         editor
           ?.chain()
@@ -203,59 +195,6 @@ const getDefaultSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
             withHeaderRow: false,
           })
           .run(),
-    },
-  ];
-};
-
-const getTableSuggestions = (locale: SuggestionLocale): SuggestionItem[] => {
-  return [
-    {
-      title: locale.addRowAfter.title,
-      searchTerms: ["row", "add", "after"],
-      command: ({ editor }) => {
-        editor.chain().focus().addRowAfter().run();
-      },
-      icon: <BorderBottomIcon style={{ width: 14, height: 14 }} />,
-    },
-    {
-      title: locale.addRowBefore.title,
-      searchTerms: ["row", "add", "before"],
-      command: ({ editor }) => {
-        editor.chain().focus().addRowBefore().run();
-      },
-      icon: <BorderTopIcon style={{ width: 14, height: 14 }} />,
-    },
-    {
-      title: locale.addColAfter.title,
-      searchTerms: ["col", "add", "after"],
-      command: ({ editor }) => {
-        editor.chain().focus().addColumnAfter().run();
-      },
-      icon: <BorderRightIcon style={{ width: 14, height: 14 }} />,
-    },
-    {
-      title: locale.addColBefore.title,
-      searchTerms: ["col", "add", "before"],
-      command: ({ editor }) => {
-        editor.chain().focus().addColumnBefore().run();
-      },
-      icon: <BorderLeftIcon style={{ width: 14, height: 14 }} />,
-    },
-    {
-      title: locale.deleteRow.title,
-      searchTerms: ["row", "delete"],
-      command: ({ editor }) => {
-        editor.chain().focus().deleteRow().run();
-      },
-      icon: <DividerHorizontalIcon style={{ width: 14, height: 14 }} />,
-    },
-    {
-      title: locale.deleteCol.title,
-      searchTerms: ["col", "delete"],
-      command: ({ editor }) => {
-        editor.chain().focus().deleteColumn().run();
-      },
-      icon: <DividerVerticalIcon style={{ width: 14, height: 14 }} />,
     },
   ];
 };
