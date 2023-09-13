@@ -1,15 +1,15 @@
-import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { Select } from "antd";
 import { useCallback, useMemo } from "react";
+import { LuChevronDown, LuCopy } from "react-icons/lu";
+import { copyText } from "./utils";
 
-export function LanguageSelector({
-  node: {
+export function CodeToolbar({ node, updateAttributes, extension }: any) {
+  console.log("node: ", node);
+  const {
     attrs: { language: defaultLanguage },
-  },
-  updateAttributes,
-  extension,
-}: any) {
+  } = node;
+
   const languages = extension.options.lowlight.listLanguages() as string[];
 
   const options = useMemo(() => {
@@ -21,7 +21,6 @@ export function LanguageSelector({
     ];
   }, [languages]);
 
-
   const filterOption = useCallback(
     (input: string, option?: { label: string; value: string }) =>
       (option?.label ?? "").toLowerCase().includes(input.toLowerCase()),
@@ -30,6 +29,12 @@ export function LanguageSelector({
 
   return (
     <NodeViewWrapper className="code-block">
+      <div
+        className="code-block-copy"
+        onClick={() => copyText(node.textContent)}
+      >
+        <LuCopy />
+      </div>
       <pre>
         <NodeViewContent as="code" />
       </pre>
@@ -43,7 +48,7 @@ export function LanguageSelector({
         options={options}
         onChange={(language) => updateAttributes({ language })}
         filterOption={filterOption}
-        suffixIcon={<ChevronDownIcon />}
+        suffixIcon={<LuChevronDown />}
       />
     </NodeViewWrapper>
   );
