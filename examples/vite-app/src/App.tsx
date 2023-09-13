@@ -1,13 +1,20 @@
 import "../../../dist/css/style.css";
 import { useRef } from "react";
 import { Button } from "antd";
-import { EditorRender, LoftEditor, onUploadImageType } from "../../../dist/esm";
+import {
+  EditorRender,
+  LoftEditor,
+  onUploadImageType,
+  // useLoftEditor,
+} from "../../../dist/esm";
 import { uploadImg } from "./utils/uploadImg";
 import "./index.css";
 // import { enUS } from "../../../dist/esm/view/locale/lang";
 
 function App() {
   const content = JSON.parse(import.meta.env.VITE_CONTENT_STRING);
+  // const markdown = import.meta.env.VITE_CONTENT_MD;
+  // const [innerHtml, setInnerHtml] = useState("");
   const editorRef = useRef<LoftEditor>();
 
   // 上传图片并返回url
@@ -17,6 +24,14 @@ function App() {
       url: res.url,
     };
   };
+
+  // 仅解析出html作为文本内容显示
+  // useLoftEditor({
+  //   content,
+  //   onReady(editor) {
+  //     setInnerHtml(editor.getHTML());
+  //   },
+  // });
 
   return (
     <div style={{ padding: 25 }}>
@@ -44,9 +59,16 @@ function App() {
           只读
         </Button>
       </div>
+      {/* <div className="loft-editor-content">
+        <div
+          className="ProseMirror"
+          dangerouslySetInnerHTML={{ __html: innerHtml }}
+        ></div>
+      </div> */}
       <div id="content" spellCheck={false}>
         <EditorRender
           content={content!}
+          // markdown={markdown}
           onReady={(editor) => {
             editorRef.current = editor;
           }}

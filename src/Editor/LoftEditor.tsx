@@ -34,6 +34,7 @@ export type LoftEditorOptions = {
   onSelectionUpdate: (editor: LoftEditor) => void;
   editable: boolean;
   content?: Content;
+  markdown?: string;
   $editor: TiptapReactEditor;
   /** 图片上传回调 */
   onUploadImage?: onUploadImageType;
@@ -53,7 +54,6 @@ export class LoftEditor {
     EditorBubbleMenu,
     ImageBubbleMenu,
     TableCellBubbleMenu,
-    
   ];
   public ready = false;
   /** 国际化 */
@@ -92,7 +92,16 @@ export class LoftEditor {
     // toolbar
     this.showToolbar = newOptions.showToolbar === false ? false : true;
 
+    if (newOptions.markdown && tiptapOptions.content) {
+      tiptapOptions.content = "";
+    }
+    console.log('tiptapOptions: ', tiptapOptions);
     this.$editor = new TiptapEditor(tiptapOptions) as TiptapReactEditor;
+
+    // markdown rewrite
+    if (newOptions.markdown) {
+      this.$editor.commands.setMarkdown(newOptions.markdown);
+    }
 
     //local set
     this.locale = {
