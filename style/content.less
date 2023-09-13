@@ -397,9 +397,9 @@
 .loft-editor-view .ProseMirror code {
   padding: 2px 4px;
   background-color: #f5f6f7;
-  background-color: var(--gray-4, #f5f6f7);
+  background-color: var(--le-gray-4, #f5f6f7);
   border: 1px solid #dee0e3;
-  border-color: var(--gray-7, #dee0e3);
+  border-color: var(--le-gray-7, #dee0e3);
   border-radius: 4px;
   margin-left: 3px;
   margin-right: 3px;
@@ -479,7 +479,7 @@
   margin-bottom: 1em;
   line-height: 1.7142857;
   border-collapse: collapse;
-  border: 1px solid var(--gray-4);
+  border: 1px solid var(--le-gray-4);
   border-spacing: 0;
   table-layout: fixed;
   border-radius: 4px;
@@ -489,9 +489,8 @@
 
 .loft-editor-view .ProseMirror thead th {
   color: var(--prose-text);
-  background-color: var(--gray-6);
+  background-color: var(--le-gray-6);
   font-weight: 600;
-  padding: 7px 8px;
   min-width: 1em;
   position: relative;
   word-wrap: break-word;
@@ -500,8 +499,7 @@
 
 .loft-editor-view .ProseMirror td {
   min-width: 1em;
-  border: 1px solid var(--gray-6);
-  padding: 7px 8px;
+  border: 1px solid var(--le-gray-6);
   min-width: 1em;
   position: relative;
   word-wrap: break-word;
@@ -510,16 +508,11 @@
 }
 
 .loft-editor-view .ProseMirror th {
-  background-color: var(--gray-6);
-  padding: 7px 8px;
+  background-color: var(--le-gray-6);
   min-width: 1em;
   position: relative;
   word-wrap: break-word;
   word-break: break-all;
-  vertical-align: top;
-}
-
-.loft-editor-view .ProseMirror tfoot td {
   vertical-align: top;
 }
 
@@ -591,28 +584,11 @@ ol ol {
   margin-top: 0;
 }
 
-.loft-editor-view .ProseMirror thead th:first-child {
-  padding-left: 0;
-}
-
-.loft-editor-view .ProseMirror thead th:last-child {
-  padding-right: 0;
-}
-
 .loft-editor-view .ProseMirror tbody td,
 tfoot td {
-  padding-top: 0.5714286em;
-  padding-right: 0.5714286em;
-  padding-bottom: 0.5714286em;
-  padding-left: 0.5714286em;
+  padding: 0.5714286em;
 }
 
-
-
-.loft-editor-view .ProseMirror tbody td:last-child,
-.loft-editor-view .ProseMirror tfoot td:last-child {
-  padding-right: 0;
-}
 
 .loft-editor-view .ProseMirror .prose> :first-child {
   margin-top: 0;
