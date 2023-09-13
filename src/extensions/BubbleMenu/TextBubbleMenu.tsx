@@ -9,7 +9,7 @@ import { Editor, isTextSelection } from "@tiptap/core";
 import BubbleItem from "./BubbleItem";
 import { linkComps } from "./menus/link";
 import { colorComps } from "./menus/color";
-import { InsertTableButton } from "../table";
+import { InsertTableButton } from "../Table";
 import { LuTable, LuCode } from "react-icons/lu";
 import { CommonBubbleMenu } from "./common/CommonBubbleMenu";
 

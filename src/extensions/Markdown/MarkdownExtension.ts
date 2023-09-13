@@ -21,13 +21,6 @@ export const MarkdownExtension = Extension.create<
   },
   addCommands() {
     return {
-      // getMarkdown: () => {
-      //   return ({ editor }) => {
-      //     const storage = editor.storage.markdown as MarkdownStorage;
-      //     return storage.serialize(editor.getHTML());
-      //   };
-      // },
-
       setMarkdown(content, emitUpdate, parseOptions) {
         return ({ commands, editor }) => {
           const storage = editor.storage.markdown as MarkdownStorage;

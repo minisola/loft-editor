@@ -27,12 +27,12 @@ import TextStyle from "@tiptap/extension-text-style";
 import Marker from "@yaskevich/extension-marker";
 import { TextAlign } from "@tiptap/extension-text-align";
 
-import { FenseExtension } from "./fense";
-import { MarkdownExtension } from "./markdown";
+import { CodeBlockExtension } from "./CodeBlock";
+import { MarkdownExtension } from "./Markdown";
 import { LocaleValuesType } from "../view/locale/lang/zh_CN";
 import { LocaleStore } from "../cacheStore";
-import { Image } from "./image";
-import { Table, TableRow, TableCell } from "./table";
+import { Image } from "./Image";
+import { Table, TableRow, TableCell } from "./Table";
 
 const TaskList = TiptapTaskList.extend({
   parseHTML() {
@@ -131,7 +131,7 @@ export const defaultTiptapExtensions = [
   }),
   Image,
   Link,
-  FenseExtension,
+  CodeBlockExtension,
   Blockquote,
   Bold,
   BulletList,

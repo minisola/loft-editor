@@ -5,7 +5,7 @@ import { RootElContext } from "../context";
 import { EditorContent } from "@tiptap/react";
 import React from "react";
 import { LoftEditor } from "../Editor/LoftEditor";
-import { Toolbar } from "../toolbar";
+import { Toolbar } from "./Toolbar";
 import LocaleProvider from "./locale/provider";
 import { Outline } from "./Outline";
 

@@ -1,3 +1,4 @@
+
 .loft-img {
   display: flex;
 }
@@ -15,7 +16,7 @@
   border: 1px solid transparent;
 }
 .loft-img__view:hover {
-  border-color: blue;
+  border-color: var(--theme-color);
 }
 .loft-img__view img {
   position: relative;
@@ -48,7 +49,7 @@
   display: block;
   height: 8px;
   width: 8px;
-  border: 1px solid blue;
+  border: 1px solid var(--theme-color);
   border-radius: 50%;
   box-sizing: border-box;
   background-color: #fff;

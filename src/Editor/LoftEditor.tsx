@@ -1,19 +1,19 @@
 import { EditorOptions, Editor as TiptapReactEditor } from "@tiptap/react";
 import { Content, Editor as TiptapEditor } from "@tiptap/core";
-import { SlashMenuPlugin } from "../extensions/slash-menu";
+import { SlashMenuPlugin } from "../extensions/SlashMenu";
 import { EditorView } from "@tiptap/pm/view";
 import { defaultTiptapExtensions } from "../extensions";
-import { serialize } from "../extensions/markdown";
+import { serialize } from "../extensions/Markdown";
 import {
   LocaleStore,
   UploadImageHandler,
   onUploadImageType,
 } from "../cacheStore";
-import { EditorBubbleMenu } from "../extensions/bubble-menu";
+import { EditorBubbleMenu } from "../extensions/BubbleMenu";
 import { Locale } from "../view/locale/context";
 import localeValues from "../view/locale/default";
-import { ImageBubbleMenu } from "../extensions/image";
-import { TableCellBubbleMenu } from "../extensions/table/menu/TableCellBubbleMenu";
+import { ImageBubbleMenu } from "../extensions/Image";
+import { TableCellBubbleMenu } from "../extensions/Table/menu/TableCellBubbleMenu";
 
 // 初始化slash插件
 const slashExtension = SlashMenuPlugin();

@@ -17,7 +17,7 @@ import php from 'highlight.js/lib/languages/php';
 import go from 'highlight.js/lib/languages/go';
 import cpp from 'highlight.js/lib/languages/cpp';
 
-import { LanguageSelector } from './language-selector';
+import { LanguageSelector } from './LanguageSelector';
 
 lowlight.registerLanguage('html', html);
 lowlight.registerLanguage('css', css);
@@ -36,7 +36,7 @@ lowlight.registerLanguage('csharp', csharp);
 lowlight.registerLanguage('php', php);
 lowlight.registerLanguage('c++', cpp);
 
-export const FenseExtension = CodeBlockLowlight.extend({
+export const CodeBlockExtension = CodeBlockLowlight.extend({
   addNodeView() {
     return ReactNodeViewRenderer(LanguageSelector);
   }

@@ -8,5 +8,5 @@ export * from "./view/Outline";
 
 export * from "./view/locale"
 
-export * from "./extensions/bubble-menu";
-export * from "./extensions/slash-menu";
+export * from "./extensions/BubbleMenu";
+export * from "./extensions/SlashMenu";
