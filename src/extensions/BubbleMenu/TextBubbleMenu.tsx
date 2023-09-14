@@ -1,14 +1,13 @@
 import { Button, Divider, Space } from "antd";
 import { BubbleMenuProps } from "@tiptap/react";
-import { FontItalicIcon, StrikethroughIcon } from "@radix-ui/react-icons";
 import { Editor, isTextSelection } from "@tiptap/core";
-import BubbleItem from "./BubbleItem";
-import { linkComps } from "./menus/link";
+import { InsertLink } from "./menus/InsertLink";
 import { InsertTableButton } from "../Table";
-import { LuCode, LuTag } from "react-icons/lu";
+import { LuCode, LuItalic, LuStrikethrough, LuTag } from "react-icons/lu";
 import { BsTypeBold } from "react-icons/bs";
 import { CommonBubbleMenu } from "./common/CommonBubbleMenu";
 import { FontColor } from "./menus/FontColor";
+import { IconButton } from "../../view/Button";
 
 export type BubbleBtnExtensionProps = {
   editor: Editor;
@@ -90,13 +89,13 @@ export function InlineTools(props: { editor: Editor }) {
       name: "italic",
       isActive: () => props.editor.isActive("italic"),
       command: () => props.editor.chain().focus().toggleItalic().run(),
-      icon: <FontItalicIcon />,
+      icon: <LuItalic />,
     },
     {
       name: "strike",
       isActive: () => props.editor.isActive("strike"),
       command: () => props.editor.chain().focus().toggleStrike().run(),
-      icon: <StrikethroughIcon />,
+      icon: <LuStrikethrough />,
     },
     {
       name: "code",
@@ -110,17 +109,16 @@ export function InlineTools(props: { editor: Editor }) {
     <Space size={4}>
       {items.map((item) => {
         return (
-          <Button
-            className="loft-editor-icon-adapt"
+          <IconButton
             key={item.name}
             type={item.isActive() ? "primary" : "text"}
             onClick={item.command}
             icon={item.icon}
-          ></Button>
+          ></IconButton>
         );
       })}
       <Divider type="vertical" />
-      <BubbleItem comps={linkComps} props={props} />
+      <InsertLink editor={props.editor} />
       <FontColor editor={props.editor} />
       <InsertTableButton editor={props.editor} />
     </Space>

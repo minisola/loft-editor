@@ -1,0 +1,34 @@
+<h1>LoftEditor</h1><p>LoftEditor是一个基于react + antd + <a target="_blank" rel="noopener noreferrer nofollow" href="https://tiptap.dev/">tiptap</a> 的所见即所得的兼<span style="color: rgb(216, 57, 49)">容markdown的编辑器</span>，专为创建程序、接口文档内容所开发。</p><ul><li><p><strong>所见即所得编辑</strong>：实时预览 Markdown，自定义组件渲染结果，提供直观的编辑体验。</p></li><li><p><strong>Slash 菜单</strong>和 <strong>Bubble 菜单</strong>：通过 Slash 命令菜单和 Bubble 菜单访问常用的格式化选项和命令。</p></li><li><p><strong>支持国际化</strong>：可自定义语言</p><p></p></li></ul><h2>安装和使用</h2><ol><li><p>安装依赖项。</p></li></ol><pre><code class="language-shell">npm install LoftEditor</code></pre><ol start="2"><li><p>使用方法</p></li></ol><pre><code class="language-tsx">function App() {
+  const content = JSON.parse(import.meta.env.VITE_CONTENT_STRING);
+  const editorRef = useRef&lt;LoftEditor&gt;();
+
+  useEffect(() =&gt; {
+    // 禁止拼写检查
+    const contentDOM = document.getElementById("content");
+    contentDOM!.spellcheck = false;
+  }, []);
+
+  // 上传图片并返回url
+  const onUploadImage: onUploadImageType = async (file: File) =&gt; {
+    const res = await uploadImg(file.name, file);
+    return {
+      url: res.url,
+    };
+  };
+
+  return (
+    &lt;div style={{ padding: 25 }}&gt;
+      &lt;div id="content"&gt;
+        &lt;EditorRender
+          content={content!}
+          onReady={(editor) =&gt; {
+            editorRef.current = editor;
+          }}
+          onUploadImage={onUploadImage}
+        &gt;&lt;/EditorRender&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre><h2>示例</h2><h4>图文示例</h4><img src="https://dev-fe-pkg.oss-cn-hangzhou.aliyuncs.com/sl/wallpaper/1693290433756ECvA2Q1c.jpg" alt="20230817144208.jpg" title="20230817144208.jpg" width="437" height="203" align="center"><h3>表格示例</h3><table style="width: 1506px"><colgroup><col style="330px"><col style="401px"><col style="307px"><col style="468px"></colgroup><tbody><tr><td colspan="1" rowspan="1" colwidth="330"><p><strong>名称</strong></p></td><td colspan="1" rowspan="1" colwidth="401"><p><strong>必填</strong></p></td><td colspan="1" rowspan="1" colwidth="307"><p><strong>类型</strong></p></td><td colspan="1" rowspan="1" colwidth="468"><p><strong>描述</strong></p></td></tr><tr><td colspan="1" rowspan="1" colwidth="330"><p><strong>Authorization</strong></p></td><td colspan="1" rowspan="1" colwidth="401"><p>✅</p></td><td colspan="1" rowspan="1" colwidth="307"><p>string</p></td><td colspan="1" rowspan="1" colwidth="468"><p><strong>tenant_access_token</strong></p><p><strong>值格式</strong>："Bearer <code>access_token</code>"</p><p><strong>示例值</strong>："Bearer t-7f1bcd13fc57d46bac21793a18e560"</p><p><a target="_blank" rel="noopener noreferrer nofollow" class="internal-link" href="https://open.feishu.cn/document/uAjLw4CM/ugTN1YjL4UTN24CO1UjN/trouble-shooting/how-to-choose-which-type-of-token-to-use">了解更多：如何选择与获取 access token</a></p></td></tr><tr><td colspan="1" rowspan="1" colwidth="330"><p><strong><span style="color: rgb(55, 60, 67)">Content-Type</span></strong></p></td><td colspan="1" rowspan="1" colwidth="401"><p>-</p></td><td colspan="1" rowspan="1" colwidth="307"><p><span style="color: rgb(55, 60, 67)">string</span></p></td><td colspan="1" rowspan="1" colwidth="468"><p><strong>固定值</strong><span style="color: rgb(55, 60, 67)">："application/json; charset=utf-8"</span></p></td></tr></tbody></table>

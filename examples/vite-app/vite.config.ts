@@ -15,6 +15,12 @@ process.env.VITE_CONTENT_MD = fs.readFileSync(
     encoding: "utf8",
   }
 );
+process.env.VITE_CONTENT_HTML = fs.readFileSync(
+  path.join(__dirname, "./mock/content.html"),
+  {
+    encoding: "utf8",
+  }
+);
 
 // https://vitejs.dev/config/
 export default defineConfig({

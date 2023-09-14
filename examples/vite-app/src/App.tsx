@@ -13,6 +13,7 @@ import "./index.css";
 
 function App() {
   const content = JSON.parse(import.meta.env.VITE_CONTENT_STRING);
+  // const content = import.meta.env.VITE_CONTENT_HTML
   // const markdown = import.meta.env.VITE_CONTENT_MD;
   // const [innerHtml, setInnerHtml] = useState("");
   const editorRef = useRef<LoftEditor>();

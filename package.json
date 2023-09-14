@@ -1,6 +1,6 @@
 {
   "name": "loft-editor",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "loft-editor is a WYSIWYG editor driven by tiptap & react & antd",
   "license": "MIT",
   "author": "sc-frontend group",
@@ -21,8 +21,6 @@
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.0",
-    "@radix-ui/colors": "^1.0.1",
-    "@radix-ui/react-icons": "^1.3.0",
     "@tippyjs/react": "^4.2.6",
     "@tiptap/core": "^2.1.7",
     "@tiptap/extension-blockquote": "^2.0.4",
