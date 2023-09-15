@@ -3,7 +3,7 @@ import classNames from "classnames";
 import type { NodeViewProps } from "@tiptap/core";
 import { NodeSelection } from "@tiptap/pm/state";
 import { NodeViewWrapper } from "@tiptap/react";
-import { useResize } from "./Resize";
+import { useResize } from "./useResize";
 
 const resizeBtn = [
   {

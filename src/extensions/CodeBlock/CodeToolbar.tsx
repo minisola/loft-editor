@@ -1,13 +1,15 @@
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { Select } from "antd";
-import { useCallback, useMemo } from "react";
-import { LuChevronDown, LuCopy } from "react-icons/lu";
+import { useCallback, useMemo, useState } from "react";
+import { LuCheck, LuChevronDown, LuCopy } from "react-icons/lu";
 import { copyText } from "./utils";
 
 export function CodeToolbar({ node, updateAttributes, extension }: any) {
   const {
     attrs: { language: defaultLanguage },
   } = node;
+
+  const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
   const languages = extension.options.lowlight.listLanguages() as string[];
 
@@ -29,10 +31,19 @@ export function CodeToolbar({ node, updateAttributes, extension }: any) {
   return (
     <NodeViewWrapper className="code-block">
       <div
-        className="code-block-copy"
-        onClick={() => copyText(node.textContent)}
+        className={`code-block-copy ${showSuccess ? "copy-success" : ""}`}
+        onClick={() => {
+          if (showSuccess) {
+            return;
+          }
+          copyText(node.textContent);
+          setShowSuccess(true);
+          setTimeout(() => {
+            setShowSuccess(false);
+          }, 2000);
+        }}
       >
-        <LuCopy />
+        {showSuccess ? <LuCheck /> : <LuCopy />}
       </div>
       <pre>
         <NodeViewContent as="code" />
