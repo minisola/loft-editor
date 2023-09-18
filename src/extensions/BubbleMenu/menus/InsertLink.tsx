@@ -37,6 +37,7 @@ export const InsertLink: React.FC<BubbleBtnExtensionProps> = ({ editor }) => {
               onClick={() => linkInputRef.current?.focus()}
               placeholder={locale.insert.title}
               onPressEnter={(e) => {
+                e.stopPropagation();
                 if (e.currentTarget.value.trim()) {
                   const url = e.currentTarget.value;
                   editor.chain().focus().setLink({ href: url }).run();
