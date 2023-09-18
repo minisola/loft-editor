@@ -1,7 +1,6 @@
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import { ReactNodeViewRenderer } from "@tiptap/react";
-import { lowlight } from "lowlight";
-
+import {common, createLowlight} from 'lowlight'
 import css from "highlight.js/lib/languages/css";
 import js from "highlight.js/lib/languages/javascript";
 import ts from "highlight.js/lib/languages/typescript";
@@ -18,23 +17,25 @@ import go from "highlight.js/lib/languages/go";
 import cpp from "highlight.js/lib/languages/cpp";
 
 import { CodeToolbar } from "./CodeToolbar";
+const lowlight = createLowlight(common)
 
-lowlight.registerLanguage("html", html);
-lowlight.registerLanguage("css", css);
-lowlight.registerLanguage("js", js);
-lowlight.registerLanguage("jsx", js);
-lowlight.registerLanguage("ts", ts);
-lowlight.registerLanguage("tsx", ts);
-lowlight.registerLanguage("shell", shell);
-lowlight.registerLanguage("rust", rust);
-lowlight.registerLanguage("java", java);
-lowlight.registerLanguage("go", go);
-lowlight.registerLanguage("python", python);
-lowlight.registerLanguage("objectivec", objectivec);
-lowlight.registerLanguage("ruby", ruby);
-lowlight.registerLanguage("csharp", csharp);
-lowlight.registerLanguage("php", php);
-lowlight.registerLanguage("c++", cpp);
+
+lowlight.register("html", html);
+lowlight.register("css", css);
+lowlight.register("js", js);
+lowlight.register("jsx", js);
+lowlight.register("ts", ts);
+lowlight.register("tsx", ts);
+lowlight.register("shell", shell);
+lowlight.register("rust", rust);
+lowlight.register("java", java);
+lowlight.register("go", go);
+lowlight.register("python", python);
+lowlight.register("objectivec", objectivec);
+lowlight.register("ruby", ruby);
+lowlight.register("csharp", csharp);
+lowlight.register("php", php);
+lowlight.register("c++", cpp);
 
 export const CodeBlockExtension = CodeBlockLowlight.extend({
   addNodeView() {
