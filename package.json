@@ -1,6 +1,6 @@
 {
   "name": "loft-editor",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "loft-editor is a WYSIWYG editor driven by tiptap & react & antd",
   "license": "MIT",
   "author": "sc-frontend group",
