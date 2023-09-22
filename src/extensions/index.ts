@@ -79,10 +79,6 @@ const TaskItem = TiptapTaskItem.extend({
   },
 });
 
-// const Image = TiptapImage.configure({
-//   allowBase64: true,
-// });
-
 Color.configure({
   types: ["textStyle"],
 });

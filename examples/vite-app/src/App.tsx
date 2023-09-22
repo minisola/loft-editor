@@ -1,6 +1,6 @@
 import "../../../dist/css/style.css";
 import { useRef } from "react";
-import { Button } from "antd";
+import { Button, Input } from "antd";
 import {
   EditorRender,
   LoftEditor,
@@ -66,6 +66,7 @@ function App() {
           dangerouslySetInnerHTML={{ __html: innerHtml }}
         ></div>
       </div> */}
+      <Input value="13123123123"></Input>
       <div id="content" spellCheck={false}>
         <EditorRender
           content={content!}
