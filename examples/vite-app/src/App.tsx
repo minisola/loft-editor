@@ -1,6 +1,6 @@
 import "../../../dist/css/style.css";
 import { useRef } from "react";
-import { Button, Input } from "antd";
+import { Button } from "antd";
 import {
   EditorRender,
   LoftEditor,
