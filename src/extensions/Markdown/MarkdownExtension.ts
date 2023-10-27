@@ -15,7 +15,7 @@ export const MarkdownExtension = Extension.create<
       bulletListMarker: "-",
       linkify: false,
       breaks: false,
-      transformPastedText: false,
+      transformPastedText: true,
       transformCopiedText: false,
     };
   },

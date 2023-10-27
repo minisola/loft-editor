@@ -1,4 +1,4 @@
-import { Button, Divider, Space } from "antd";
+import { Divider, Space } from "antd";
 import { BubbleMenuProps } from "@tiptap/react";
 import { Editor, isTextSelection } from "@tiptap/core";
 import { InsertLink } from "./menus/InsertLink";

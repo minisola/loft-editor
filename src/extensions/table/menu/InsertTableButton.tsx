@@ -9,7 +9,7 @@ import { IconButton } from "../../../view/Button";
 export const InsertTableButton: React.FC<BubbleBtnExtensionProps> = ({
   editor,
 }) => {
-  const isTableActive = editor.isActive("table");
+  const invalid = editor.isActive("table") || !editor.state.selection.empty;
   const locale = LocaleStore.get(editor, "table") as LocaleValuesType["table"];
   const containerRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState<{ rows: number; columns: number }>({
@@ -30,8 +30,14 @@ export const InsertTableButton: React.FC<BubbleBtnExtensionProps> = ({
       <Popover
         arrow={false}
         placement="bottom"
-        open={isTableActive ? false : open}
-        onOpenChange={setOpen}
+        open={open}
+        onOpenChange={(_open) => {
+          if (invalid) {
+            setOpen(false);
+          } else {
+            setOpen(_open);
+          }
+        }}
         destroyTooltipOnHide={true}
         getPopupContainer={() => containerRef.current || document.body}
         align={{ offset: [8, 10] }}
@@ -73,7 +79,7 @@ export const InsertTableButton: React.FC<BubbleBtnExtensionProps> = ({
           </div>
         }
       >
-        <IconButton disabled={isTableActive} icon={<LuTable />}></IconButton>
+        <IconButton disabled={invalid} icon={<LuTable />}></IconButton>
       </Popover>
     </div>
   );

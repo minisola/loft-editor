@@ -129,12 +129,19 @@ export class LoftEditor {
     return this.$editor.getJSON();
   }
   public getMarkdown() {
-    return serialize(this.$editor?.getHTML() || "");
+    return serialize(this.$editor.getHTML() || "");
   }
   public getHTML() {
-    return this.$editor?.getHTML();
+    return this.$editor.getHTML();
   }
 
+  public setContent(content?: Content) {
+    const newContent = content || "";
+    // avoid flushSync error https://github.com/ueberdosis/tiptap/issues/3580
+    setTimeout(() => {
+      this.$editor.commands.setContent(newContent);
+    }, 0);
+  }
   public focus() {
     this.$editor.view.focus();
   }

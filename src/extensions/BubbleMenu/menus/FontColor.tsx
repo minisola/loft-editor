@@ -14,19 +14,11 @@ export const FontColor: React.FC<BubbleBtnExtensionProps> = ({ editor }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const { $from, $to } = editor.state.selection;
-    const sectionNodeMarks = [
-      ...($from.nodeAfter?.marks || []),
-      ...($to.nodeBefore?.marks || []),
-    ];
-    const textColorMark = sectionNodeMarks.find(
-      (mark) => mark.type.name === "textStyle"
-    );
-    const bgColorMark = sectionNodeMarks.find(
-      (mark) => mark.type.name === "highlight"
-    );
-    setTextColorKey(textColorMark?.attrs.color || EMPTY_STRING);
-    setBgColorKey(bgColorMark?.attrs.color || EMPTY_STRING);
+    const textStyle = editor.getAttributes("textStyle");
+    const highlight = editor.getAttributes("highlight");
+
+    setTextColorKey(textStyle.color || EMPTY_STRING);
+    setBgColorKey(highlight.color || EMPTY_STRING);
   }, [editor.state]);
 
   const locale = LocaleStore.get(
