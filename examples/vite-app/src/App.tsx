@@ -66,7 +66,6 @@ function App() {
           dangerouslySetInnerHTML={{ __html: innerHtml }}
         ></div>
       </div> */}
-      <Input value="13123123123"></Input>
       <div id="content" spellCheck={false}>
         <EditorRender
           content={content!}
