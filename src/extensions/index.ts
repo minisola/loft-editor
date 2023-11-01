@@ -26,6 +26,7 @@ import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import Marker from "@yaskevich/extension-marker";
 import { TextAlign } from "@tiptap/extension-text-align";
+import CharacterCount from "@tiptap/extension-character-count";
 
 import { CodeBlockExtension } from "./CodeBlock";
 import { MarkdownExtension } from "./Markdown";
@@ -96,6 +97,8 @@ const TableCellExtension = TableCell.extend({
   content: `(${tableCellContent.join(" | ")})+`,
 });
 
+const limit = 56000;
+
 export const defaultTiptapExtensions = [
   MarkdownExtension,
   Highlight.configure({ multicolor: true }),
@@ -124,6 +127,9 @@ export const defaultTiptapExtensions = [
       return locale.quickMenu.title;
     },
     includeChildren: true,
+  }),
+  CharacterCount.configure({
+    limit,
   }),
   Image,
   Link,
