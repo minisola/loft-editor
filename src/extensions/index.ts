@@ -97,8 +97,6 @@ const TableCellExtension = TableCell.extend({
   content: `(${tableCellContent.join(" | ")})+`,
 });
 
-const limit = 56000;
-
 export const defaultTiptapExtensions = [
   MarkdownExtension,
   Highlight.configure({ multicolor: true }),
@@ -128,9 +126,7 @@ export const defaultTiptapExtensions = [
     },
     includeChildren: true,
   }),
-  CharacterCount.configure({
-    limit,
-  }),
+  CharacterCount,
   Image,
   Link,
   CodeBlockExtension,
