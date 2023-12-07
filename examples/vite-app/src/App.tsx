@@ -1,6 +1,6 @@
 import "../../../dist/css/style.css";
 import { useRef } from "react";
-import { Button, Input } from "antd";
+import { Button } from "antd";
 import {
   EditorRender,
   LoftEditor,
@@ -9,6 +9,7 @@ import {
 } from "../../../dist/esm";
 import { uploadImg } from "./utils/uploadImg";
 import "./index.css";
+import { useState } from "react";
 // import { enUS } from "../../../dist/esm/view/locale/lang";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   // const markdown = import.meta.env.VITE_CONTENT_MD;
   // const [innerHtml, setInnerHtml] = useState("");
   const editorRef = useRef<LoftEditor>();
+  const [count, setCount] = useState<any>(0);
 
   // 上传图片并返回url
   const onUploadImage: onUploadImageType = async (file: File) => {
@@ -54,6 +56,9 @@ function App() {
         </Button>
         <Button
           onClick={() => {
+            console.log(
+              editorRef.current?.$editor.storage.characterCount.characters()
+            );
             editorRef.current?.setEditable(false);
           }}
         >
@@ -66,21 +71,22 @@ function App() {
           dangerouslySetInnerHTML={{ __html: innerHtml }}
         ></div>
       </div> */}
-      <Input value="13123123123"></Input>
       <div id="content" spellCheck={false}>
         <EditorRender
           content={content!}
           // markdown={markdown}
           onReady={(editor) => {
             editorRef.current = editor;
+            setCount(editor.$editor.storage.characterCount.characters());
           }}
           onUploadImage={onUploadImage}
-          // onUpdate={(editor) => {
-          // console.log(editor);
-          // }}
+          onUpdate={(editor) => {
+            setCount(editor.$editor.storage.characterCount.characters());
+          }}
           // locale={enUS}
           // showToolbar={false}
         ></EditorRender>
+        <div style={{ float: "right" }}>{count}</div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
-import { theme } from "antd";
 import { BubbleMenu, BubbleMenuProps } from "@tiptap/react";
+import { getThemeToken } from "../../../view/theme";
 
 export interface BubbleMenuItem {
   name: string;
@@ -9,7 +9,7 @@ export interface BubbleMenuItem {
 }
 
 export function CommonBubbleMenu({ children, ...rest }: BubbleMenuProps) {
-  const { token } = theme.useToken();
+  const { token } = getThemeToken();
 
   return (
     <BubbleMenu

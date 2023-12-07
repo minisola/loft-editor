@@ -26,6 +26,7 @@ import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import Marker from "@yaskevich/extension-marker";
 import { TextAlign } from "@tiptap/extension-text-align";
+import CharacterCount from "@tiptap/extension-character-count";
 
 import { CodeBlockExtension } from "./CodeBlock";
 import { MarkdownExtension } from "./Markdown";
@@ -125,6 +126,7 @@ export const defaultTiptapExtensions = [
     },
     includeChildren: true,
   }),
+  CharacterCount,
   Image,
   Link,
   CodeBlockExtension,
