@@ -1,13 +1,13 @@
 import { Editor } from "@tiptap/core";
-import { theme } from "antd";
 import { InlineTools } from "../../extensions/BubbleMenu";
+import { getThemeToken } from "../theme";
 
 export type ToolbarProps = React.PropsWithChildren<{
   editor: Editor;
 }>;
 
 export function Toolbar(props: ToolbarProps) {
-  const { token } = theme.useToken();
+  const { token } = getThemeToken();
   return (
     <div
       style={{

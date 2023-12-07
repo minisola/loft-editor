@@ -6,7 +6,7 @@ import { EditorView } from "../view/EditorView";
 export const EditorRender: React.FC<Partial<LoftEditorOptions>> = (options) => {
   const loftEditor = useLoftEditor(options);
   if (!loftEditor?.$editor) {
-    return;
+    return null;
   }
   return <EditorView loftEditor={loftEditor}></EditorView>;
 };
